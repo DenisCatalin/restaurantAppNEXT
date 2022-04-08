@@ -1,0 +1,23 @@
+.openNav {
+  width: 70px;
+  height: 70px;
+  background: var(--navbarBackground70);
+  position: fixed;
+  left: 95%;
+  top: 87%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  box-shadow: 1px 1px 20px var(--mainColor50);
+}
+
+.openNavElipse {
+  width: 15px;
+  margin-left: 1px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+}

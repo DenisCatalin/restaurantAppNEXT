@@ -1,0 +1,25 @@
+.container {
+  background: var(--background);
+  border-radius: 10px;
+}
+
+.image {
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.cardContent {
+  color: rgb(212, 35, 35);
+  width: 100%;
+  min-height: 90vh;
+  background: rgba(43, 43, 43, 0.8);
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}

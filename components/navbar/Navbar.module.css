@@ -1,0 +1,88 @@
+.container {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbarContainer {
+  width: 30%;
+  border-radius: 50px;
+  height: 8%;
+  position: fixed;
+  bottom: 5%;
+  background-color: var(--navbarBackground70);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 0.5rem;
+  user-select: none;
+}
+
+.navbarCollection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.navbarCircle {
+  width: 72px;
+  height: 72px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--mainColor);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: inset 7px 7px 7px #a1641d, inset -5px -5px 5px #ffc239;
+}
+
+.navbarLink {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.navbarLabel {
+  position: absolute;
+  top: -70%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-size: 1.3em;
+}
+
+.navbarImage {
+  cursor: pointer;
+}
+
+.openNav {
+  width: 70px;
+  height: 70px;
+  background: var(--mainColor);
+  position: fixed;
+  left: 95%;
+  top: 88%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.openNavElipse {
+  width: 10px;
+  margin-left: 2px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}

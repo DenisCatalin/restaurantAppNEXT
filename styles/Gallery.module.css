@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../public/static/galleryBG.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--navbarBackground70);
+  backdrop-filter: blur(14px);
+}
+
+.galleryCollection {
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  padding: 1rem;
+  top: 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 2ch;
+  overflow: auto;
+}
