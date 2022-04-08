@@ -15,6 +15,7 @@ Logare prin magic.link
 Responsive
 Cerc pe pagina principala cu poza profilului in loc de e-mail text doar (dupa click sa apara un pop-up cu alte detalii, notificari, istoric comenzi, rezervari, etc...)]
 Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...)
+db pe cloud
 */
 
 export default function Home() {
