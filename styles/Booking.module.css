@@ -1,0 +1,1365 @@
+.imageBG {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../public/static/bookingBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--navbarBackground70);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .bookingScheme {
+    width: 60%;
+    height: 90vh;
+    border-radius: 10px;
+  }
+  
+  .bookPlace {
+    width: 100%;
+    height: 95%;
+    background-image: url("../public/static/restaurant2D.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transform: translateY(4%);
+    position: relative;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.8), 1px 1px 5px rgba(0,0,0,0.2), inset 1px 1px 20px rgba(0,0,0,0.8), -1px -1px 5px rgba(0,0,0,0.8);
+  }
+  
+  .selectTable{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #1dac35e5;
+    transform: rotateZ(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  .selectTable:nth-child(1) {
+    top: 11.7%;
+    left: 62.7%;
+  }
+  .selectTable:nth-child(2) {
+    top: 32%;
+    left: 37.9%;
+  }
+  .selectTable:nth-child(3) {
+    top: 32%;
+    left: 50%;
+  }
+  .selectTable:nth-child(4) {
+    top: 32%;
+    left: 62.7%;
+  }
+  .selectTable:nth-child(5) {
+    top: 52%;
+    left: 37.9%;
+  }
+  .selectTable:nth-child(6) {
+    top: 52%;
+    left: 50%;
+  }
+  .selectTable:nth-child(7) {
+    top: 52%;
+    left: 62.7%;
+  }
+  .selectTable:nth-child(8) {
+    top: 63.2%;
+    left: 13.2%;
+    transform: rotateZ(-2.2deg);
+  }
+  .selectTable:nth-child(9) {
+    top: 78.2%;
+    left: 24.9%;
+    transform: rotateZ(-3deg);
+  }
+  .selectTableText {
+    background: transparent;
+    transform: rotateZ(-50deg);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .rotateZ {
+    transform: rotateZ(0deg);
+  }
+  
+  .historyc {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-5%, 75%);
+  }
+  
+  .seatText {
+    margin-top: 1em;
+    margin-left: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .seatText h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5em;
+    color: white;
+    opacity: 0.5;
+  }
+  
+  .taken,
+  .available,
+  .selected {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5em;
+    border-radius: 5px;
+  }
+  
+  .taken {
+    background: #646464;
+    pointer-events: none;
+  }
+  .available {
+    background: #1dac35e5;
+  }
+  .selected {
+    background: #ff9900c7;
+  }
+  
+  .tableSelected {
+    background: #ff9900c7;
+  }
+  .tableTaken {
+    background: #646464;
+    pointer-events: none;
+  }
+  
+  .bookingForm {
+    width: 30%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background: #1a1a1a;
+    margin-left: 1em;
+    border-radius: 10px;
+  }
+  
+  .bookingInputForm {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .bookingInputForm h3 {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    opacity: 0.5;
+    width: 35%;
+  }
+  
+  .bookingInputDate {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dayBooking {
+    width: 20%;
+    margin-left: 1em;
+    height: 100%;
+    padding: 0.2rem;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #ff9900c7;
+    color: white;
+    background-color:rgb(32, 32, 32);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .yearBooking {
+    width: 20%;
+    margin-left: 1em;
+    height: 100%;
+    padding: 0.2rem;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #ff9900c7;
+    color: white;
+    background-color:rgb(32, 32, 32);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .monthBooking {
+    width: 25%;
+    margin-left: 1em;
+    height: 100%;
+    padding: 0.2rem;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #ff9900c7;
+    color: white;
+    background-color:rgb(32, 32, 32);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .bookingInput {
+    padding: 0.2rem;
+    width: 20%;
+    border: 2px solid #ff9900c7;
+    border-radius: 5px;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: bold;
+    background: #1a1a1a;
+  }
+  
+  .dayBooking::placeholder,
+  .yearBooking::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+  
+  .bookingOrder {
+    width: 25%;
+    height: 10%;
+    font-family: "Poppins", sans-serif;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: #ff9900c7;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+  }
+  
+  .mgn {
+    width: 25%;
+    height: 15vh;
+    background: #000;
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    top: 78%;
+    left: -50%;
+    border-radius: 5px;
+    user-select: none;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .mgnContent {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    padding: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(-70%) scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @media screen and (max-width: 1400px) {
+    .bookingInputForm h3 {
+      font-size: 0.85em;
+    }
+    .month-booking {
+      width: 35%;
+    }
+    .selectTable{
+      width: 60px;
+      height: 60px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.5%;
+      left: 64%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.5%;
+      left: 36%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.5%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.5%;
+      left: 64%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.2%;
+      left: 36%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.2%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.2%;
+      left: 64%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.5%;
+      left: 8.1%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.5%;
+      left: 21.4%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.7em;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .bookingScheme {
+      position: relative;
+    }
+    .booking-container {
+      flex-direction: column;
+    }
+    .mgn {
+      transform: translateY(-150%);
+    }
+  }
+  
+  @media screen and (max-width: 1024px) and (max-height: 1366px) {
+    .bookingForm {
+      transform: translateY(-90%);
+      height: 35vh;
+      width: 60%;
+    }
+    .selectTable{
+      width: 60px;
+      height: 60px;
+    }
+    .bookPlace {
+      height: 55%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 11.6%;
+      left: 62.7%;
+    }
+    .selectTable:nth-child(2) {
+      top: 32.4%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(3) {
+      top: 32.4%;
+      left: 50%;
+    }
+    .selectTable:nth-child(4) {
+      top: 32.4%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(5) {
+      top: 52.6%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(6) {
+      top: 52.6%;
+      left: 50%;
+    }
+    .selectTable:nth-child(7) {
+      top: 52.6%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(8) {
+      top: 63.8%;
+      left: 13.2%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 79.4%;
+      left: 25%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.7em;
+    }
+    .historyc {
+      transform: translateX(-10%);
+    }
+  }
+  
+  @media screen and (max-width: 768px) and (max-height: 1024px) {
+    .bookingForm {
+      transform: translateY(-90%);
+      height: 35vh;
+      width: 70%;
+    }
+    .selectTable{
+      width: 45px;
+      height: 45px;
+    }
+    .bookPlace {
+      height: 55%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 11.6%;
+      left: 62.7%;
+    }
+    .selectTable:nth-child(2) {
+      top: 32.4%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(3) {
+      top: 32.4%;
+      left: 50%;
+    }
+    .selectTable:nth-child(4) {
+      top: 32.4%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(5) {
+      top: 52.6%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(6) {
+      top: 52.6%;
+      left: 50%;
+    }
+    .selectTable:nth-child(7) {
+      top: 52.6%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(8) {
+      top: 63.8%;
+      left: 13.2%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 79.4%;
+      left: 25%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.7em;
+    }
+    .historyc {
+      transform: translateX(-10%);
+    }
+  }
+  
+  @media screen and (max-width: 1024px) and (max-height: 768px) {
+    .bookingForm {
+      transform: translateY(-5%);
+      height: 35vh;
+      width: 70%;
+    }
+    .bookPlace {
+      height: 90%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 12.8%;
+      left: 62.65%;
+    }
+    .selectTable:nth-child(2) {
+      top: 35.2%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(3) {
+      top: 35.2%;
+      left: 50.1%;
+    }
+    .selectTable:nth-child(4) {
+      top: 35.2%;
+      left: 62.65%;
+    }
+    .selectTable:nth-child(5) {
+      top: 57.2%;
+      left: 37.9%;
+    }
+    .selectTable:nth-child(6) {
+      top: 57.2%;
+      left: 50.1%;
+    }
+    .selectTable:nth-child(7) {
+      top: 57.2%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(8) {
+      top: 69.5%;
+      left: 13.2%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 86%;
+      left: 24.9%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.7em;
+    }
+    .historyc {
+      transform: translateX(-10%);
+    }
+  }
+  
+  @media screen and (max-width: 850px) and (max-height: 450px) {
+    .bookingForm {
+      transform: translate(-0.9%, 60%);
+      height: 80vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 50px;
+      height: 50px;
+    }
+    .bookPlace {
+      height: 140%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 12%;
+      left: 62.6%;
+    }
+    .selectTable:nth-child(2) {
+      top: 33.6%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 33.6%;
+      left: 49.9%;
+    }
+    .selectTable:nth-child(4) {
+      top: 33.8%;
+      left: 62.55%;
+    }
+    .selectTable:nth-child(5) {
+      top: 55.2%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 55.2%;
+      left: 49.9%;
+    }
+    .selectTable:nth-child(7) {
+      top: 55.2%;
+      left: 62.55%;
+    }
+    .selectTable:nth-child(8) {
+      top: 66.8%;
+      left: 13.1%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 82.8%;
+      left: 25%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.5em;
+    }
+    .historyc {
+      transform: translateX(-5%);
+    }
+    .seatText {
+      margin-left: 2em;
+    }
+    .formToColumn {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+    .month-booking {
+      width: 50%;
+    }
+    .dayBooking {
+      width: 27%;
+    }
+    .yearBooking {
+      width: 32%;
+    }
+    .historyc h3 {
+      font-size: 0.8em;
+    }
+  }
+  
+  @media screen and (max-width: 812px) and (max-height: 375px) {
+    .bookingForm {
+      transform: translate(-0.9%, 60%);
+      height: 80vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 50px;
+      height: 50px;
+    }
+    .bookPlace {
+      height: 140%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 13%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(2) {
+      top: 36.7%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 36.7%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 36.7%;
+      left: 62.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 59.5%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 59.5%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 59.5%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(8) {
+      top: 72.3%;
+      left: 13%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 89.4%;
+      left: 24.8%;
+      transform: rotateZ(-3deg);
+    }
+  }
+  
+  @media screen and (max-width: 736px) and (max-height: 414px) {
+    .bookingForm {
+      transform: translate(-0.9%, 60%);
+      height: 80vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 45px;
+      height: 45px;
+    }
+    .bookPlace {
+      height: 140%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 10.9%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(2) {
+      top: 30%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 30%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 30%;
+      left: 62.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 48.8%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 48.8%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 48.8%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(8) {
+      top: 59.3%;
+      left: 13.1%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 73.4%;
+      left: 24.8%;
+      transform: rotateZ(-3deg);
+    }
+  }
+  
+  @media screen and (max-width: 731px) and (max-height: 411px) {
+    .bookingForm {
+      transform: translate(-0.9%, 60%);
+      height: 80vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 45px;
+      height: 45px;
+    }
+    .bookPlace {
+      height: 140%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 10.9%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(2) {
+      top: 30%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 30%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 30%;
+      left: 62.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 48.8%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 48.8%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 48.8%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(8) {
+      top: 59.3%;
+      left: 13.1%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 73.4%;
+      left: 24.8%;
+      transform: rotateZ(-3deg);
+    }
+  }
+  
+  @media screen and (max-width: 640px) and (max-height: 360px) {
+    .bookingForm {
+      transform: translate(-0.9%, 60%);
+      height: 80vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 40px;
+      height: 40px;
+    }
+    .bookPlace {
+      height: 140%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 11%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(2) {
+      top: 30%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 30%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 30%;
+      left: 62.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 48.8%;
+      left: 37.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 48.8%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 48.8%;
+      left: 62.5%;
+    }
+    .selectTable:nth-child(8) {
+      top: 59.2%;
+      left: 13.1%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 73.35%;
+      left: 24.8%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1.5em;
+    }
+    .historyc {
+      transform: translateX(-5%);
+    }
+    .seatText {
+      margin-left: 2em;
+    }
+    .formToColumn {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+    .month-booking {
+      width: 50%;
+    }
+    .dayBooking {
+      width: 27%;
+    }
+    .yearBooking {
+      width: 32%;
+    }
+    .historyc h3 {
+      font-size: 0.8em;
+    }
+  }
+  
+  @media screen and (max-width: 450px) and (max-height: 850px) {
+    .bookingForm {
+      transform: translate(-2%, -50%);
+      height: 40vh;
+      width: 95%;
+    }
+    .selectTable{
+      width: 32px;
+      height: 32px;
+    }
+    .bookPlace {
+      height: 65%;
+      width: 160%;
+      transform: translateX(-18.8%);
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 66.3%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 34.25%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 50%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 66.3%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 34.25%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 50%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 66.3%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.55%;
+      left: 2.35%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.8%;
+      left: 17.55%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1em;
+    }
+    .historyc {
+      transform: translateX(-5%);
+    }
+    .seatText {
+      margin-left: 2em;
+    }
+    .formToColumn {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+    .month-booking {
+      width: 50%;
+    }
+    .dayBooking {
+      width: 27%;
+    }
+    .yearBooking {
+      width: 32%;
+    }
+    .historyc h3 {
+      font-size: 0.8em;
+    }
+  }
+  
+  @media screen and (max-width: 414px) and (max-height: 736px) {
+    .selectTable{
+      width: 28px;
+      height: 28px;
+      border-radius: 2px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.7%;
+      left: 36%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.7%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.7%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 36%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.55%;
+      left: 7.7%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.8%;
+      left: 21.3%;
+      transform: rotateZ(-3deg);
+    }
+  }
+  
+  @media screen and (max-width: 411px) and (max-height: 731px) {
+    .selectTable{
+      width: 28px;
+      height: 28px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 36%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 50%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 36%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 50%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 64.35%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.55%;
+      left: 7.7%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.8%;
+      left: 21.3%;
+      transform: rotateZ(-3deg);
+    }
+  }
+  
+  @media screen and (max-width: 375px) and (max-height: 812px) {
+    .selectTable{
+      width: 32px;
+      height: 32px;
+      border-radius: 2px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 67.4%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 32.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 49.85%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 67.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 32.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 49.85%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 67.4%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.65%;
+      left: 0%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.5%;
+      left: 15%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 1em;
+    }
+    .month-booking {
+      width: 50%;
+      font-size: 0.8em;
+    }
+    .dayBooking {
+      width: 29%;
+      font-size: 0.8em;
+    }
+    .yearBooking {
+      width: 32%;
+      font-size: 0.8em;
+    }
+    .seatText {
+      margin-left: 2em;
+    }
+    .taken,
+    .selected,
+    .available {
+      width: 26px;
+      height: 26px;
+    }
+    .historyc h3 {
+      font-size: 0.8em;
+    }
+    .bookingInputForm {
+      font-size: 0.9em;
+    }
+    .bookingInput {
+      font-size: 0.8em;
+    }
+    .bookingOrder {
+      height: 15%;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media screen and (max-width: 375px) and (max-height: 667px) {
+    .selectTable{
+      width: 26px;
+      height: 26px;
+      border-radius: 2px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 64.4%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 49.85%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 64.4%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 49.85%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 64.4%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.65%;
+      left: 7.6%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.65%;
+      left: 21%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 0.8em;
+    }
+    .month-booking {
+      width: 50%;
+      font-size: 0.8em;
+    }
+    .dayBooking {
+      width: 29%;
+      font-size: 0.8em;
+    }
+    .yearBooking {
+      width: 32%;
+      font-size: 0.8em;
+    }
+    .seatText {
+      margin-left: 1em;
+    }
+    .taken,
+    .selected,
+    .available {
+      width: 20px;
+      height: 20px;
+    }
+    .historyc h3 {
+      font-size: 0.65em;
+    }
+    .bookingInputForm {
+      font-size: 0.9em;
+    }
+    .bookingInput {
+      font-size: 0.8em;
+    }
+    .bookingOrder {
+      height: 15%;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media screen and (max-width: 360px) and (max-height: 640px) {
+    .selectTable{
+      width: 25px;
+      height: 25px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 64.5%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 50%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 64.5%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 50%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 64.5%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.55%;
+      left: 7.8%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.65%;
+      left: 21%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 0.8em;
+    }
+    .month-booking {
+      width: 50%;
+      font-size: 0.75em;
+    }
+    .dayBooking {
+      width: 29%;
+      font-size: 0.75em;
+    }
+    .yearBooking {
+      width: 32%;
+      font-size: 0.75em;
+    }
+    .historyc h3 {
+      font-size: 0.8em;
+    }
+    .bookingInputForm {
+      font-size: 0.9em;
+    }
+    .bookingInput {
+      font-size: 0.8em;
+    }
+    .bookingOrder {
+      height: 15%;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) and (max-height: 568px) {
+    .selectTable{
+      width: 22px;
+      height: 22px;
+      border-radius: 2px;
+    }
+    .selectTable:nth-child(1) {
+      top: 8.6%;
+      left: 64.3%;
+    }
+    .selectTable:nth-child(2) {
+      top: 23.6%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(3) {
+      top: 23.6%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(4) {
+      top: 23.6%;
+      left: 64.3%;
+    }
+    .selectTable:nth-child(5) {
+      top: 38.4%;
+      left: 35.8%;
+    }
+    .selectTable:nth-child(6) {
+      top: 38.4%;
+      left: 49.8%;
+    }
+    .selectTable:nth-child(7) {
+      top: 38.4%;
+      left: 64.3%;
+    }
+    .selectTable:nth-child(8) {
+      top: 46.55%;
+      left: 7.8%;
+      transform: rotateZ(-2.2deg);
+    }
+    .selectTable:nth-child(9) {
+      top: 57.65%;
+      left: 21%;
+      transform: rotateZ(-3deg);
+    }
+    .selectTableText {
+      font-size: 0.7em;
+    }
+    .month-booking {
+      width: 50%;
+      font-size: 0.7em;
+    }
+    .dayBooking {
+      width: 29%;
+      font-size: 0.7em;
+    }
+    .yearBooking {
+      width: 32%;
+      font-size: 0.7em;
+    }
+    .seatText {
+      margin-left: 1em;
+    }
+    .taken,
+    .selected,
+    .available {
+      width: 20px;
+      height: 20px;
+    }
+    .historyc h3 {
+      font-size: 0.65em;
+    }
+    .bookingInputForm {
+      font-size: 0.8em;
+    }
+    .bookingInput {
+      font-size: 0.7em;
+    }
+    .bookingOrder {
+      height: 15%;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+    }
+  }
+  

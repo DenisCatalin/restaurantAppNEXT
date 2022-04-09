@@ -109,32 +109,40 @@ const NavBar = ({ showNav = true, showOpen = false }) => {
               />
             </a>
           </Link>
-          <Image
-            src={"/static/about.svg"}
-            alt=""
-            width={45}
-            height={45}
-            className={styles.navbarImage}
-            onMouseEnter={() => {
-              setMoveCircle(402);
-              setIsHover(1);
-              setLabelLink("ABOUT");
-              setMoveLabel(402);
-            }}
-          />
-          <Image
-            src={"/static/contact.svg"}
-            alt=""
-            width={45}
-            height={45}
-            className={styles.navbarImage}
-            onMouseEnter={() => {
-              setMoveCircle(502);
-              setIsHover(1);
-              setLabelLink("CONTACT");
-              setMoveLabel(495);
-            }}
-          />
+          <Link href="/about">
+            <a>
+              <Image
+                src={"/static/about.svg"}
+                alt=""
+                width={45}
+                height={45}
+                className={styles.navbarImage}
+                onMouseEnter={() => {
+                  setMoveCircle(402);
+                  setIsHover(1);
+                  setLabelLink("ABOUT");
+                  setMoveLabel(402);
+                }}
+              />
+            </a>
+          </Link>
+          <Link href="/contact">
+            <a>
+              <Image
+                src={"/static/contact.svg"}
+                alt=""
+                width={45}
+                height={45}
+                className={styles.navbarImage}
+                onMouseEnter={() => {
+                  setMoveCircle(502);
+                  setIsHover(1);
+                  setLabelLink("CONTACT");
+                  setMoveLabel(495);
+                }}
+              />
+            </a>
+          </Link>
         </div>
       </motion.div>
       <motion.div

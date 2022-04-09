@@ -1,0 +1,58 @@
+.imageBG {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../public/static/aboutBG.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--navbarBackground70);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 80%;
+  min-height: 80vh;
+  background-color: var(--Background);
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.textSide {
+  width: 60%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  font-family: 'McLaren', cursive;
+  color: var(--textColor);
+}
+
+.text {
+  overflow: auto;
+}
+
+.imageSide {
+  width: 40%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(0, 0, 0, .5);
+}

@@ -5,11 +5,9 @@ import NavBar from "../components/navbar/navbar";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 /*
-Pagina contact
-Pagina rezervare
-Pagina despre
 Completare pagina galerie [upload imagini pe cloud, comments(edit, delete, report), likes]
 Logare prin magic.link
 Responsive
@@ -21,6 +19,8 @@ db pe cloud
 export default function Home() {
   const [buttonScale, setButtonScale] = useState(0);
   const [buttonScale2, setButtonScale2] = useState(0);
+
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -62,6 +62,7 @@ export default function Home() {
             whileHover={{
               rotate: [0, 10, -10, 0],
             }}
+            onClick={() => router.push("/about")}
           >
             <motion.div
               className={styles.buttonChangeBG}
@@ -83,6 +84,7 @@ export default function Home() {
             whileHover={{
               rotate: [0, -10, 10, 0],
             }}
+            onClick={() => router.push("/booking")}
           >
             <motion.div
               className={styles.buttonChangeBG}
@@ -100,7 +102,7 @@ export default function Home() {
         <div className={styles.socialMedia}>
           <motion.div
             className={styles.socialMediaCard}
-            whileHover={{ rotate: 90, stiffness: 10 }}
+            whileHover={{ rotate: [0, 50, -30, 0], stiffness: 10 }}
             whileTap={{ scale: 0.8 }}
             animate={{ opacity: [0, 1] }}
           >
@@ -108,7 +110,7 @@ export default function Home() {
           </motion.div>
           <motion.div
             className={styles.socialMediaCard}
-            whileHover={{ rotate: 90, stiffness: 10 }}
+            whileHover={{ rotate: [0, 50, -30, 0], stiffness: 10 }}
             whileTap={{ scale: 0.8 }}
             animate={{ opacity: [0, 1], delay: 0.7 }}
           >
@@ -116,7 +118,7 @@ export default function Home() {
           </motion.div>
           <motion.div
             className={styles.socialMediaCard}
-            whileHover={{ rotate: 90, stiffness: 10 }}
+            whileHover={{ rotate: [0, 50, -30, 0], stiffness: 10 }}
             whileTap={{ scale: 0.8 }}
             animate={{ opacity: [0, 1] }}
           >
@@ -129,7 +131,7 @@ export default function Home() {
           </motion.div>
           <motion.div
             className={styles.socialMediaCard}
-            whileHover={{ rotate: 90, stiffness: 10 }}
+            whileHover={{ rotate: [0, 50, -30, 0], stiffness: 10 }}
             whileTap={{ scale: 0.8 }}
             animate={{ opacity: [0, 1] }}
           >
