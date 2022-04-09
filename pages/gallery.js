@@ -17,7 +17,7 @@ const Gallery = () => {
         <div className={styles.galleryCollection}>
           <AnimateSharedLayout type="crossfade">
             {items.map((photo, i) => (
-              <Photo layoutId={i} imgUrl={photo.url} />
+              <Photo key={i} layoutId={i} imgUrl={photo.url} />
             ))}
           </AnimateSharedLayout>
         </div>
