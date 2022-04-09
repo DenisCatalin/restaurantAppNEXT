@@ -94,7 +94,7 @@ export default function Home() {
               className={styles.buttonText}
               style={{ color: buttonScale2 ? "black" : "white" }}
             >
-              Bookin
+              Booking
             </p>
           </motion.button>
         </div>
