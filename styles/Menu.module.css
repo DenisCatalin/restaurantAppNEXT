@@ -58,7 +58,7 @@
 
 .menuNavText {
   position: absolute;
-  top: 75%;
+  top: 75%; /* -65% */
   left: 0;
   text-shadow: 2px 2px #00000096;
   color: white;

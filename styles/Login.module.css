@@ -1,0 +1,18 @@
+.imageBG {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../public/static/loginBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--navbarBackground70);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
