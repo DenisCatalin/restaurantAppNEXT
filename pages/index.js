@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 /*
 Completare pagina galerie [upload imagini pe cloud, comments(edit, delete, report), likes]
@@ -21,6 +22,7 @@ export default function Home() {
   const [buttonScale2, setButtonScale2] = useState(0);
 
   const router = useRouter();
+  Cookies.remove("scheduleDay");
 
   return (
     <div className={styles.container}>

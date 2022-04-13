@@ -49,7 +49,9 @@ const About = () => {
           </div>
           <div className={styles.imageSide}>
             <Image
-              src={"/static/aboutImage.jpg"}
+              src={
+                "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854505/restaurant-app-images/aboutImage_dxekq8.jpg"
+              }
               alt=""
               width={750}
               height={750}

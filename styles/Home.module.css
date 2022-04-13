@@ -1,7 +1,7 @@
 .imageBackground {
   width: 100%;
   min-height: 100vh;
-  background-image: url("../public/static/landing.jpg");
+  background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649855065/restaurant-app-images/landing_prznt2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

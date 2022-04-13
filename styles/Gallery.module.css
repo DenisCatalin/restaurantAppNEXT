@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background-image: url("../public/static/galleryBG.jpg");
+  background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854572/restaurant-app-images/galleryBG_wfbaaa.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

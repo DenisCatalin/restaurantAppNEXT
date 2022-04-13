@@ -1,7 +1,7 @@
 .scheduleImage {
   width: 100%;
   min-height: 100vh;
-  background-image: url("/static/scheduleBG.png");
+  background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854597/restaurant-app-images/scheduleBG_rxhrxz.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -123,4 +123,25 @@
   backdrop-filter: blur(10px);
   transform: translateX(-50%);
   width: 100%;
+}
+
+.table {
+  width: 100%;
+}
+
+.tr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--textColor);
+}
+
+.th, .td {
+  width: 100%;
+  border: 1px solid white;
+  color: var(--textColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

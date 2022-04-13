@@ -1,0 +1,48 @@
+.imageBG {
+width: 100%;
+min-height: 100vh;
+background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854482/restaurant-app-images/aboutBG_qg1cip.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+
+.container {
+width: 100%;
+min-height: 100vh;
+background-color: var(--navbarBackground70);
+backdrop-filter: blur(10px);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.content {
+width: 95%;
+min-height: 80vh;
+border-radius: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.imageSection {
+    width: 65%;
+    height: 80vh;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(0, 0, 0, .5);
+}
+
+.image {
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.commentsSection {
+    width: 32%;
+    height: 80vh;
+    background-color: var(--Background);
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(0, 0, 0, .5);
+}

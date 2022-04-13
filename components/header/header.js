@@ -28,8 +28,7 @@ const Header = () => {
 
   useEffect(async () => {
     try {
-      const { email, issuer } = await magic.user.getMetadata();
-      const didToken = await magic.user.getIdToken();
+      const { email } = await magic.user.getMetadata();
 
       if (email) {
         setUsername(email);

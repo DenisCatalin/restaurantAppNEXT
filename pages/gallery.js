@@ -3,10 +3,9 @@ import Header from "../components/header/header";
 import Head from "next/head";
 import Photo from "../components/photo/photo";
 import NavBar from "../components/navbar/navbar";
-import { items } from "../lib/photos";
-import { AnimateSharedLayout } from "framer-motion";
+import { search, mapImageResources } from "../lib/cloudinary";
 
-const Gallery = () => {
+const Gallery = ({ images }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,11 +14,9 @@ const Gallery = () => {
       <div className={styles.content}>
         <Header />
         <div className={styles.galleryCollection}>
-          <AnimateSharedLayout type="crossfade">
-            {items.map((photo, i) => (
-              <Photo key={i} layoutId={i} imgUrl={photo.url} />
-            ))}
-          </AnimateSharedLayout>
+          {images.map((photo, i) => (
+            <Photo key={i} items={photo} />
+          ))}
         </div>
       </div>
       <NavBar showNav={false} showOpen={true} />
@@ -28,3 +25,16 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+export async function getStaticProps() {
+  const results = await search({
+    expression: 'folder="restaurant-app-gallery"',
+  });
+
+  const { resources, next_cursor: nextCursor } = results;
+  const images = mapImageResources(resources);
+
+  return {
+    props: { images, nextCursor: nextCursor || false },
+  };
+}

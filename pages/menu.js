@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/navbar/navbar";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { getMenuItems } from "../lib/menuFetch";
 import MenuItem from "../components/menuItem/menuItem";
@@ -246,7 +246,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/meat.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/meat_wewd5q.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -273,7 +275,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/turkey.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/turkey_h2kazq.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -300,7 +304,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/dessert.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/dessert_ijdxww.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -327,7 +333,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/lamb.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/lamb_fovfu1.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -354,7 +362,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/food.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/food_w37w8c.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -381,7 +391,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/spaguetti.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/spaguetti_pfoosa.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -408,7 +420,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/pork.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/pork_hekbaz.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -435,7 +449,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/seafood.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/seafood_swsqmh.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -462,7 +478,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/rice.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/rice_kzymhi.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -489,7 +507,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/starters.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/starters_m89pwp.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -516,7 +536,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/salad.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/salad_x0seve.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -543,7 +565,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/eco-food.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/eco-food_besoc2.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -570,7 +594,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/breakfast.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/breakfast_bxgkwj.png"
+                }
                 alt=""
                 width={40}
                 height={40}
@@ -597,7 +623,9 @@ const Menu = ({
           <Link href={`#${labelLink}`}>
             <a>
               <Image
-                src={"/static/goat.png"}
+                src={
+                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/goat_yuzxsa.png"
+                }
                 alt=""
                 width={40}
                 height={38}
