@@ -1,18 +1,78 @@
 .imageBG {
-    width: 100%;
-    min-height: 100vh;
-    background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854474/restaurant-app-images/loginBG_nwigfk.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-  
-  .container {
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--navbarBackground70);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854474/restaurant-app-images/loginBG_nwigfk.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--navbarBackground70);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 30%;
+  min-height: 40vh;
+  background-color: var(--Background70);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 5px solid var(--mainColor);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.signinHeader {
+  color: var(--textColor);
+  font-family: 'Gothic A1', sans-serif;
+  letter-spacing: 1px;
+}
+
+.inputWrapper {
+  width: 60%;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  transform: translateY(-30%);
+}
+
+.emailInput {
+  width: 100%;
+  height: 100%;
+  background: var(--navbarBackground70);
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 1rem;
+  color: var(--textColor);
+  font-size: 1.2em;
+  font-family: 'McLaren', cursive;
+}
+
+.loginBtn {
+  width: 30%;
+  height: 5vh;
+  border-radius: 20px;
+  background: var(--mainColor);
+  font-family: 'Courier New', sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.userMsg {
+  color: var(--textColor);
+  font-weight: bold;
+}

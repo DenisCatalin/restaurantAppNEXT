@@ -42,7 +42,98 @@ align-items: center;
 .commentsSection {
     width: 32%;
     height: 80vh;
-    background-color: var(--Background);
+    background-color: rgba(39, 39, 39, 0.555);
     border-radius: 20px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(0, 0, 0, .5);
+    padding: 1rem;
+}
+
+.comments {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.photoDescription {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.profilePic {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.photoDetails {
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.userPosted {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    color: var(--mainColor);
+    font-size: 1.6em;
+}
+
+.datePosted {
+    font-size: .65em;
+    color:rgb(207, 207, 207);
+}
+
+.commentsSpace {
+    width: 100%;
+    height: 70%;
+    background: var(--navbarBackground70);
+    border-radius: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.like, .comment {
+    display: flex;
+    cursor: pointer;
+}
+
+.buttonLabel {
+    color: var(--textColor);
+    font-weight: bold;
+    font-family: 'McLaren', cursive;
+    margin-left: 10px;
+}
+
+.commentInput {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.inputComment {
+    width: 100%;
+    height: 70%;
+    transform: translateY(15%);
+    background: var(--navbarBackground70);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: var(--textColor);
+    padding: .5rem;
+    font-size: 1em;
+    overflow: hidden;
 }

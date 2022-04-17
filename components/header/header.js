@@ -8,6 +8,12 @@ import { useState, useEffect } from "react";
 const Header = () => {
   const [username, setUsername] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [didToken, setDidToken] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [displayName, setDisplayName] = useState();
+  const [profilePic, setProfilePic] = useState();
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [loadingProfilePic, setIsLoadingProfilePic] = useState(true);
 
   const router = useRouter();
 
@@ -19,24 +25,53 @@ const Header = () => {
     router.push("/");
   };
 
-  const logout = () => {
-    magic.user.logout().then(() => {
-      setUsername();
-      setLoggedIn(false);
-    });
+  const logout = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${didToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      setShowDropdown(!showDropdown);
+
+      const res = await response.json();
+    } catch (error) {
+      console.error("Error logging out", error);
+      router.push("/login");
+    }
   };
 
   useEffect(async () => {
-    try {
-      const { email } = await magic.user.getMetadata();
+    const isLoggedIn = await magic.user.isLoggedIn();
+    if (isLoggedIn) {
+      try {
+        const { email } = await magic.user.getMetadata();
+        const didToken = await magic.user.getIdToken();
 
-      if (email) {
-        setUsername(email);
-        setLoggedIn(true);
+        const res = await fetch("/api/userDetails");
+        const data = await res.json();
+
+        setProfilePic(data?.userDetails?.data?.users[0].profilePic);
+        setDisplayName(data?.userDetails?.data?.users[0].displayName);
+        setIsLoadingProfilePic(false);
+
+        if (email) {
+          setUsername(email);
+          setLoggedIn(true);
+          setDidToken(didToken);
+        }
+      } catch (error) {
+        console.error("Can't retrieve email in NavBar", error);
       }
-    } catch (error) {
-      console.error("Can't retrieve email in NavBar", error);
+    } else {
     }
+
+    setIsLoading(false);
   }, []);
 
   return (
@@ -62,13 +97,54 @@ const Header = () => {
         className={styles.usernameContainer}
         whileTap={{ scale: 0.95 }}
       >
-        <h3
-          className={styles.userName}
-          onClick={loggedIn ? logout : handleOnClick}
+        {isLoading ? null : (
+          <div
+            className={styles.userName}
+            onClick={
+              loggedIn ? () => setShowDropdown(!showDropdown) : handleOnClick
+            }
+          >
+            {loggedIn ? (
+              <Image
+                src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+                alt=""
+                width={70}
+                height={70}
+                className={styles.profilePic}
+              />
+            ) : (
+              <h3 style={{ cursor: "pointer" }}>Login</h3>
+            )}
+          </div>
+        )}
+      </motion.div>
+      <motion.div
+        className={styles.dropdown}
+        animate={{ scale: showDropdown ? 1 : 0 }}
+      >
+        <div className={styles.dropdownImage}>
+          <Image
+            src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+            alt={displayName}
+            layout="fill"
+            className={styles.profilePic}
+          />
+        </div>
+        <motion.button
+          className={styles.manageProfile}
+          whileHover={{ rotate: [0, -10, 10, 0] }}
         >
-          {loggedIn ? username : "Login"}
-        </h3>
-        <Image src={"/static/expand.svg"} alt="" width={40} height={40} />
+          Manage Profile
+        </motion.button>
+        <h2>{displayName}</h2>
+        <h3>{username}</h3>
+        <motion.button
+          className={styles.signOut}
+          whileHover={{ rotate: [0, -10, 10, 0] }}
+          onClick={logout}
+        >
+          Sign Out
+        </motion.button>
       </motion.div>
     </motion.div>
   );

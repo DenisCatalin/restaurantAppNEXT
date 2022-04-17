@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { magic } from "../lib/magic-client";
 import Header from "../components/header/header";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [userMsg, setUserMsg] = useState("");
@@ -76,23 +77,40 @@ const Login = () => {
           <title>Good Food - SignIn</title>
         </Head>
         <Header />
-        <main className={styles.main}>
-          <div className={styles.mainWrapper}>
-            <h1 className={styles.signinHeader}>Sign In</h1>
-            <input
+        <motion.main className={styles.main} animate={{ scale: [0, 1] }}>
+          <motion.h1
+            className={styles.signinHeader}
+            animate={{ opacity: [0, 1] }}
+            transition={{ delay: 0.5 }}
+          >
+            SIGN IN
+          </motion.h1>
+          <div className={styles.inputWrapper}>
+            <motion.h4
+              className={styles.signinHeader}
+              animate={{ opacity: [0, 1] }}
+              transition={{ delay: 0.7 }}
+            >
+              Email
+            </motion.h4>
+            <motion.input
               type="text"
-              placeholder="Email address"
               className={styles.emailInput}
               onChange={handleOnChangeEmail}
+              animate={{ opacity: [0, 1] }}
+              transition={{ delay: 0.9 }}
             />
-            {userMsg !== "" ? (
-              <p className={styles.userMsg}>{userMsg}</p>
-            ) : null}
-            <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-              {isLoading ? "Loading..." : "Sign In"}
-            </button>
           </div>
-        </main>
+          {userMsg !== "" ? <p className={styles.userMsg}>{userMsg}</p> : null}
+          <motion.button
+            onClick={handleLoginWithEmail}
+            className={styles.loginBtn}
+            whileHover={{ rotate: [0, -5, 5, 0] }}
+            animate={{ scale: isLoading ? 0 : 1 }}
+          >
+            {isLoading ? "Loading..." : "Sign In"}
+          </motion.button>
+        </motion.main>
       </div>
     </div>
   );

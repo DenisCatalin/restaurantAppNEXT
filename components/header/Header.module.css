@@ -28,3 +28,58 @@
 .logo {
   cursor: pointer;
 }
+
+.profilePic {
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.dropdown {
+  width: 18%;
+  min-height: 43vh;
+  background-color: var(--Background);
+  position: absolute;
+  top: 90%;
+  left: 81%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(190, 131, 53, 0.9);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  color: var(--textColor);
+  font-family: 'McLaren', cursive;
+}
+
+.dropdownImage {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.signOut {
+  width: 35%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: var(--mainColor);
+  font-family: 'McLaren', cursive;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.manageProfile {
+  width: 35%;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: var(--mainColor);
+  font-family: 'McLaren', cursive;
+  font-weight: bold;
+  font-size: .8em;
+  cursor: pointer;
+}

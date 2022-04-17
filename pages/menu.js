@@ -9,6 +9,7 @@ import Link from "next/link";
 import { getMenuItems } from "../lib/menuFetch";
 import MenuItem from "../components/menuItem/menuItem";
 import { useSelector } from "react-redux";
+import useRedirectUser from "../utils/redirectUser";
 
 export async function getServerSideProps(context) {
   const beefItems = await getMenuItems("Beef");
@@ -25,6 +26,17 @@ export async function getServerSideProps(context) {
   const vegetarianItems = await getMenuItems("Vegetarian");
   const breakfastItems = await getMenuItems("Breakfast");
   const goatItems = await getMenuItems("Goat");
+
+  const { userId } = await useRedirectUser(context);
+  if (!userId) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
