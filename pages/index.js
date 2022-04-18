@@ -6,13 +6,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 
 /*
 Responsive
-Cerc pe pagina principala cu poza profilului in loc de e-mail text doar (dupa click sa apara un pop-up cu alte detalii, notificari, istoric comenzi, rezervari, etc...)]
+Istoric comenzi, rezervari, etc... in pagina de profil
 Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...)
-Cart pentru meniu + implementare stripe demo api
+Cart pentru meniu + implementare stripe demo
+sistem de notificari
+sistem de chat
 */
 
 export default function Home() {
@@ -20,7 +21,6 @@ export default function Home() {
   const [buttonScale2, setButtonScale2] = useState(0);
 
   const router = useRouter();
-  Cookies.remove("scheduleDay");
 
   return (
     <div className={styles.container}>
