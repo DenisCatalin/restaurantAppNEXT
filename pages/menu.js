@@ -83,13 +83,9 @@ const Menu = ({
   const [lastKnownLabel, setLastKnownLabel] = useState(9);
   const [lastKnownLabelName, setLastKnownLabelName] = useState("");
 
-  const navbarVisibility = useSelector((state) => state.navbar);
-
   const handleScroll = (event) => {
     const { scrollHeight, scrollTop, clientHeight } = event.target;
     const scroll = scrollHeight - scrollTop - clientHeight;
-
-    console.log(scroll);
 
     if (!categoryClicked) {
       if (scroll < 20609 && scroll > 18409) {
@@ -244,7 +240,6 @@ const Menu = ({
         initial={{ scale: 1 }}
         animate={{
           y: [-100, 0],
-          scale: navbarVisibility ? 1 : 0,
         }}
       >
         <motion.div

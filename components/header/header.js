@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { magic } from "../../lib/magic-client";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { useSelector } from "react-redux";
+import CartItem from "../cart-item/cart-item";
 Modal.setAppElement("#__next");
 
 const Header = () => {
@@ -19,22 +21,29 @@ const Header = () => {
   const [imgSrc, setImgSrc] = useState();
   const [uploadData, setUploadData] = useState(false);
   const [toggleModal, setTogglemodal] = useState(false);
+  const [toggleCart, setToggleCart] = useState(false);
+
+  const cart = useSelector((state) => state.cart);
+
+  const getItemsCount = () => {
+    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  };
 
   useEffect(async () => {
     const isLoggedIn = await magic.user.isLoggedIn();
     if (isLoggedIn) {
       try {
         const { email } = await magic.user.getMetadata();
-        const didToken = await magic.user.getIdToken();
-
-        const res = await fetch("/api/userDetails");
-        const data = await res.json();
-
-        setProfilePic(data?.userDetails?.data?.users[0].profilePic);
-        setDisplayName(data?.userDetails?.data?.users[0].displayName);
-        setIsLoadingProfilePic(false);
-
         if (email) {
+          const didToken = await magic.user.getIdToken();
+
+          const res = await fetch("/api/userDetails");
+          const data = await res.json();
+
+          setProfilePic(data?.userDetails?.data?.users[0].profilePic);
+          setDisplayName(data?.userDetails?.data?.users[0].displayName);
+          setIsLoadingProfilePic(false);
+
           setUsername(email);
           setLoggedIn(true);
           setDidToken(didToken);
@@ -136,6 +145,12 @@ const Header = () => {
     console.log(response);
   };
 
+  const handleToggleCart = () => {
+    setToggleCart(!toggleCart);
+    setTogglemodal(false);
+    setShowDropdown(false);
+  };
+
   return (
     <motion.div
       className={styles.headerContainer}
@@ -155,34 +170,53 @@ const Header = () => {
           className={styles.logo}
         />
       </motion.div>
-      <motion.div
-        className={styles.usernameContainer}
-        whileTap={{ scale: 0.95 }}
-      >
-        {isLoading ? null : (
-          <div
-            className={styles.userName}
-            onClick={
-              loggedIn ? () => setShowDropdown(!showDropdown) : handleOnClick
-            }
-          >
-            {loggedIn ? (
-              <Image
-                src={loadingProfilePic ? "/static/logo.svg" : profilePic}
-                alt=""
-                width={70}
-                height={70}
-                className={styles.profilePic}
-              />
-            ) : (
-              <h3 style={{ cursor: "pointer" }}>Login</h3>
-            )}
+      <div className={styles.headerTools}>
+        {loggedIn ? (
+          <div className={styles.cartContainer} onClick={handleToggleCart}>
+            <Image
+              src={"/static/header_cart.svg"}
+              alt="Shopping Cart"
+              width={50}
+              height={50}
+              onClick={handleToggleModal}
+            />
+            <span className={styles.countCartItems}>{getItemsCount()}</span>
           </div>
-        )}
-      </motion.div>
+        ) : null}
+        <motion.div
+          className={styles.usernameContainer}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isLoading ? null : (
+            <div
+              className={styles.userName}
+              onClick={
+                loggedIn
+                  ? () => {
+                      setShowDropdown(!showDropdown);
+                      setToggleCart(false);
+                    }
+                  : handleOnClick
+              }
+            >
+              {loggedIn ? (
+                <Image
+                  src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+                  alt=""
+                  width={70}
+                  height={70}
+                  className={styles.profilePic}
+                />
+              ) : (
+                <h3 style={{ cursor: "pointer" }}>Login</h3>
+              )}
+            </div>
+          )}
+        </motion.div>
+      </div>
       <Modal
         isOpen={toggleModal}
-        contentLabel="Watch the video"
+        contentLabel="Change Profile Picture"
         // onRequestClose={() => router.back()}
         className={styles.modal}
         overlayClassName={styles.overlay}
@@ -239,6 +273,31 @@ const Header = () => {
         >
           Sign Out
         </motion.button>
+      </motion.div>
+      <motion.div
+        className={styles.dropdownCart}
+        animate={{ scale: toggleCart ? 1 : 0 }}
+      >
+        <h1>Your Cart</h1>
+        <div className={styles.cartItems}>
+          {cart.length === 0 ? (
+            <h1>Your Cart is Empty</h1>
+          ) : (
+            <>
+              {cart.map((item, i) => {
+                return <CartItem key={i} cartItem={item} />;
+              })}
+            </>
+          )}
+        </div>
+        {cart.length === 0 ? null : (
+          <button
+            className={styles.cartCheckout}
+            onClick={() => router.push("/cart")}
+          >
+            Go To Checkout
+          </button>
+        )}
       </motion.div>
     </motion.div>
   );

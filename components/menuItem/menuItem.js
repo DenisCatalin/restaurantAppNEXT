@@ -7,13 +7,15 @@ import { getItemById } from "../../lib/menuFetch";
 import Modal from "react-modal";
 import Ingredient from "../ingredient/ingredient";
 import { useDispatch } from "react-redux";
-import { showNav, hideNav } from "../../redux/actions";
+import { addToCart } from "../../redux/cart.slice";
 
 Modal.setAppElement("#__next");
 
 function Content({ id, img, dataMeal }) {
-  const meal = { ...dataMeal };
+  const price = { price: 9.99 };
+  const meal = { ...dataMeal, ...price };
   const [isHover, setIsHover] = useState(false);
+  const dispatch = useDispatch();
 
   let ingredients = [];
   let ingredients2 = [];
@@ -77,6 +79,7 @@ function Content({ id, img, dataMeal }) {
           className={styles.modalAddToCart}
           whileHover={{ rotate: [0, 5, -5, 0] }}
           whileTap={{ scale: 0.8 }}
+          onClick={() => dispatch(addToCart(meal))}
         >
           <Image
             src={"/static/add_to_cart.svg"}
@@ -106,12 +109,9 @@ function Content({ id, img, dataMeal }) {
 
 const MenuItem = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
-    if (isOpen) dispatch(showNav());
-    else dispatch(hideNav());
   };
   const { idMeal, strMeal, strMealThumb } = items;
 
@@ -151,8 +151,9 @@ const MenuItem = ({ items }) => {
         </div>
         <Modal
           isOpen={isOpen}
-          contentLabel="Example Modal"
           className={styles.modal}
+          contentLabel="Watch the video"
+          overlayClassName={styles.overlay}
         >
           <div className={styles.modalContainer}>
             <motion.div

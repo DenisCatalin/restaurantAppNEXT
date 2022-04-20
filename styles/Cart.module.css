@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&family=Marmelad&family=McLaren&family=Merriweather+Sans:wght@300&display=swap");
+
+.imageBG {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("https://res.cloudinary.com/dgkdpysp5/image/upload/v1650465597/restaurant-app-images/good_food-wallpaper-1920x1080_srm6zj.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--navbarBackground70);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content {
+      width: 88%;
+      min-height: 90vh;
+      padding: 1rem;
+      overflow: hidden;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -80%);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 1), inset 0 0 10px rgba(0, 0, 0, 1);
+      font-family: 'Gothic A1', sans-serif;
+  }
+  .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Merriweather Sans', sans-serif;
+  }
+  .header div {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    color: var(--textColor);
+    border-bottom: 2px solid var(--mainColor);
+    margin-bottom: 2rem;
+  }
+  .image {
+    width: 100px;
+  }
+  .imageCart {
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .cartItems {
+      width: 100%;
+      height: 70vh;
+      overflow: auto;
+  }
+  .body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .body > * {
+    flex: 1;
+  }
+  .body p {
+      color: var(--textColor);
+      font-size: 1.3em;
+  }
+  .image {
+    width: 100px;
+  }
+  .buttons > * {
+    width: 35px;
+    height: 35px;
+  }
+
+.itemQuantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.toMainColor {
+    color: var(--mainColor);
+}
+
+.emptyCart {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--textColor);
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--textColor);
+}

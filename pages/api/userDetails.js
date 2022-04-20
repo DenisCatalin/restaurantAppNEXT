@@ -10,7 +10,7 @@ export default async function getUserDetails(req, res) {
 
       res.send({ done: true, userDetails });
     } catch (error) {
-      console.error("Something went wrong getting the schedule", error);
+      console.error("Something went wrong getting the user details", error);
       res.status(500).send({ done: false });
     }
   } else {

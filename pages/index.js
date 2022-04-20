@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 Responsive
 Istoric comenzi, rezervari, etc... in pagina de profil
 Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...)
-Cart pentru meniu + implementare stripe demo
 sistem de notificari
 sistem de chat
 */
