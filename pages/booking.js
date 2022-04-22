@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import Header from "../components/header/header";
 import Navbar from "../components/navbar/navbar";
+import Loading from "../components/loading-button/loading-button";
+import LoadingPage from "../components/loading-component/loading-component";
 import styles from "../styles/Booking.module.css";
 import { useState, useEffect } from "react";
 import cls from "classnames";
@@ -84,7 +86,15 @@ const Booking = () => {
   const [Table8, setTable8] = useState({ selected: false, reserved: false });
   const [Table9, setTable9] = useState({ selected: false, reserved: false });
   const [Bookings, setBookings] = useState([]);
-  const [user, setUser] = useState({});
+  const [issuer, setIssuer] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(async () => {
+    const res = await fetch("/api/userDetails");
+    const data = await res.json();
+
+    setIssuer(data?.userDetails?.data?.users[0].issuer);
+  }, []);
 
   const showNotification = (content, color) => {
     if (color === 0) setNotificationColor(false);
@@ -96,7 +106,7 @@ const Booking = () => {
     }, 10000);
   };
 
-  const sendReservation = () => {
+  const sendReservation = async () => {
     if (
       month === "" ||
       day === "" ||
@@ -125,27 +135,41 @@ const Booking = () => {
         0
       );
 
-    const dateString = `${month}-${day}-${year}`;
-    // Axios.post(`http://localhost:3001/addTablesToBooking/${dateString}`, {
-    //   tables: Bookings,
-    //   name: Username,
-    //   seats: seatsNumber,
-    // })
-    //   .then((response) => {
-    //     console.log(response.data.message);
-    //     if (response.data.message === "Complete")
-    //       return showNotification(
-    //         "Your order has been succesfully processed. We have sent you the details via e-mail. Thank you!",
-    //         1
-    //       );
-    //     else
-    //       return showNotification(
-    //         `We're sorry! It seems like another person already booked a table that you selected. Refresh the page and if the issue persists, feel free to contact us.`,
-    //         0
-    //       );
-    //   })
-    //   .catch((err) => console.log(err));
+    const today = new Date();
+    let luni = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
 
+    const date = `${luni[today.getMonth()]}-${
+      days[today.getDate()]
+    }-${today.getFullYear()}`;
+
+    const dateString = `${month}-${day}-${year}`;
+    const res = await fetch("/api/addTablesToBooking", {
+      method: "POST",
+      headers: {
+        body: JSON.stringify({
+          tables: Bookings,
+          issuer: issuer,
+          seats: seatsNumber,
+          date: dateString,
+          currentDate: date,
+        }),
+      },
+    });
+    const data = await res.json();
+    console.log(data);
     let d = new Date();
     let currentMonth = d.getMonth();
     let currentDay = d.getDate();
@@ -199,11 +223,12 @@ const Booking = () => {
         `We're very sorry! This number of seats exceeds the limit of tables in our restaurant.`,
         0
       );
+
     setTablesNumber(Math.round(seatsNumber / 4));
     setTablesToSelect(Math.round(seatsNumber / 4));
   }, [seatsNumber]);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (
       month !== "" &&
       day !== "" &&
@@ -212,39 +237,62 @@ const Booking = () => {
       day !== "Day" &&
       year !== "Year"
     ) {
+      setIsLoading(true);
       const dateString = `${month}-${day}-${year}`;
-      //   Axios.get(`http://localhost:3001/checkBookingDate/${dateString}`)
-      //     .then((response) => {
-      //       const seats = response.data.SeatsTaken.split("|");
-      //       if (seats[0] === "1")
-      //         setTable1((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable1((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[1] === "1")
-      //         setTable2((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable2((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[2] === "1")
-      //         setTable3((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable3((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[3] === "1")
-      //         setTable4((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable4((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[4] === "1")
-      //         setTable5((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable5((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[5] === "1")
-      //         setTable6((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable6((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[6] === "1")
-      //         setTable7((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable7((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[7] === "1")
-      //         setTable8((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable8((prevState) => ({ ...prevState, reserved: false }));
-      //       if (seats[8] === "1")
-      //         setTable9((prevState) => ({ ...prevState, reserved: true }));
-      //       else setTable9((prevState) => ({ ...prevState, reserved: false }));
-      //     })
-      //     .catch((err) => console.log(err));
+      const res = await fetch("/api/checkTablesForBooking", {
+        method: "GET",
+        headers: {
+          body: JSON.stringify({
+            date: dateString,
+          }),
+        },
+      });
+
+      const data = await res.json();
+      console.log("data", data);
+      const tables = data?.check?.data?.booking.length;
+      console.log("tables", tables);
+      if (tables === 0) {
+        setTable1((prevState) => ({ ...prevState, reserved: false }));
+        setTable2((prevState) => ({ ...prevState, reserved: false }));
+        setTable3((prevState) => ({ ...prevState, reserved: false }));
+        setTable4((prevState) => ({ ...prevState, reserved: false }));
+        setTable5((prevState) => ({ ...prevState, reserved: false }));
+        setTable6((prevState) => ({ ...prevState, reserved: false }));
+        setTable7((prevState) => ({ ...prevState, reserved: false }));
+        setTable8((prevState) => ({ ...prevState, reserved: false }));
+        setTable9((prevState) => ({ ...prevState, reserved: false }));
+      } else {
+        const seats = data?.check?.data?.booking[0].bookingTables.split("|");
+        if (seats[0] === "1")
+          setTable1((prevState) => ({ ...prevState, reserved: true }));
+        else setTable1((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[1] === "1")
+          setTable2((prevState) => ({ ...prevState, reserved: true }));
+        else setTable2((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[2] === "1")
+          setTable3((prevState) => ({ ...prevState, reserved: true }));
+        else setTable3((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[3] === "1")
+          setTable4((prevState) => ({ ...prevState, reserved: true }));
+        else setTable4((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[4] === "1")
+          setTable5((prevState) => ({ ...prevState, reserved: true }));
+        else setTable5((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[5] === "1")
+          setTable6((prevState) => ({ ...prevState, reserved: true }));
+        else setTable6((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[6] === "1")
+          setTable7((prevState) => ({ ...prevState, reserved: true }));
+        else setTable7((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[7] === "1")
+          setTable8((prevState) => ({ ...prevState, reserved: true }));
+        else setTable8((prevState) => ({ ...prevState, reserved: false }));
+        if (seats[8] === "1")
+          setTable9((prevState) => ({ ...prevState, reserved: true }));
+        else setTable9((prevState) => ({ ...prevState, reserved: false }));
+      }
+      setIsLoading(false);
     }
   }, [month, day, year]);
 
@@ -453,181 +501,191 @@ const Booking = () => {
             <h3 style={{ background: "transparent" }}>{notification}</h3>
           </div>
         </div>
-        <div className={styles.bookingScheme}>
-          <div className={styles.bookPlace}>
-            <div
-              className={
-                Table1.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table1.reserved ? seatReserved : {}}
-              id="1"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>1</h1>
+        {isLoading ? (
+          <LoadingPage />
+        ) : (
+          <div className={styles.bookingScheme}>
+            <div className={styles.bookPlace}>
+              <div
+                className={
+                  Table1.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table1.reserved ? seatReserved : {}}
+                id="1"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>1</h1>
+              </div>
+              <div
+                className={
+                  Table2.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table2.reserved ? seatReserved : {}}
+                id="2"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>2</h1>
+              </div>
+              <div
+                className={
+                  Table3.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table3.reserved ? seatReserved : {}}
+                id="3"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>3</h1>
+              </div>
+              <div
+                className={
+                  Table4.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table4.reserved ? seatReserved : {}}
+                id="4"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>4</h1>
+              </div>
+              <div
+                className={
+                  Table5.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table5.reserved ? seatReserved : {}}
+                id="5"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>5</h1>
+              </div>
+              <div
+                className={
+                  Table6.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table6.reserved ? seatReserved : {}}
+                id="6"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>6</h1>
+              </div>
+              <div
+                className={
+                  Table7.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table7.reserved ? seatReserved : {}}
+                id="7"
+                onClick={tableButton}
+              >
+                <h1 className={styles.selectTableText}>7</h1>
+              </div>
+              <div
+                className={
+                  Table8.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table8.reserved ? seatReserved : {}}
+                id="8"
+                onClick={tableButton}
+              >
+                <h1 className={cls(styles.selectTableText, styles.rotateZ)}>
+                  8
+                </h1>
+              </div>
+              <div
+                className={
+                  Table9.selected
+                    ? cls(styles.selectTable, styles.tableSelected)
+                    : styles.selectTable
+                }
+                style={Table9.reserved ? seatReserved : {}}
+                id="9"
+                onClick={tableButton}
+              >
+                <h1 className={cls(styles.selectTableText, styles.rotateZ)}>
+                  9
+                </h1>
+              </div>
             </div>
-            <div
-              className={
-                Table2.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table2.reserved ? seatReserved : {}}
-              id="2"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>2</h1>
-            </div>
-            <div
-              className={
-                Table3.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table3.reserved ? seatReserved : {}}
-              id="3"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>3</h1>
-            </div>
-            <div
-              className={
-                Table4.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table4.reserved ? seatReserved : {}}
-              id="4"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>4</h1>
-            </div>
-            <div
-              className={
-                Table5.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table5.reserved ? seatReserved : {}}
-              id="5"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>5</h1>
-            </div>
-            <div
-              className={
-                Table6.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table6.reserved ? seatReserved : {}}
-              id="6"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>6</h1>
-            </div>
-            <div
-              className={
-                Table7.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table7.reserved ? seatReserved : {}}
-              id="7"
-              onClick={tableButton}
-            >
-              <h1 className={styles.selectTableText}>7</h1>
-            </div>
-            <div
-              className={
-                Table8.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table8.reserved ? seatReserved : {}}
-              id="8"
-              onClick={tableButton}
-            >
-              <h1 className={cls(styles.selectTableText, styles.rotateZ)}>8</h1>
-            </div>
-            <div
-              className={
-                Table9.selected
-                  ? cls(styles.selectTable, styles.tableSelected)
-                  : styles.selectTable
-              }
-              style={Table9.reserved ? seatReserved : {}}
-              id="9"
-              onClick={tableButton}
-            >
-              <h1 className={cls(styles.selectTableText, styles.rotateZ)}>9</h1>
+            <div className={styles.historyc}>
+              <div className={styles.seatText}>
+                <div className={styles.taken}></div>
+                <h3>Taken</h3>
+              </div>
+              <div className={styles.seatText}>
+                <div className={styles.available}></div>
+                <h3>Available</h3>
+              </div>
+              <div className={styles.seatText}>
+                <div className={styles.selected}></div>
+                <h3>Selected</h3>
+              </div>
             </div>
           </div>
-          <div className={styles.historyc}>
-            <div className={styles.seatText}>
-              <div className={styles.taken}></div>
-              <h3>Taken</h3>
-            </div>
-            <div className={styles.seatText}>
-              <div className={styles.available}></div>
-              <h3>Available</h3>
-            </div>
-            <div className={styles.seatText}>
-              <div className={styles.selected}></div>
-              <h3>Selected</h3>
-            </div>
-          </div>
-        </div>
+        )}
         <div className={styles.bookingForm}>
-          <div className={cls(styles.bookingInputForm, styles.formToColumn)}>
-            <h3>Reservation date</h3>
-            <div>
-              <select
-                className={styles.monthBooking}
-                name="month"
-                id="month"
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
-              >
-                {months.map((month, i) => {
-                  return (
-                    <option value={month} key={i}>
-                      {month}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={styles.dayBooking}
-                name="day"
-                id="day"
-                value={day}
-                onChange={(e) => setDay(e.target.value)}
-              >
-                {days.map((day, i) => {
-                  return (
-                    <option value={day} key={i}>
-                      {day}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={styles.yearBooking}
-                name="year"
-                id="year"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-              >
-                {years.map((year, i) => {
-                  return (
-                    <option value={year} key={i}>
-                      {year}
-                    </option>
-                  );
-                })}
-              </select>
+          <div className={styles.bookingInputForm}>
+            <div className={styles.displayFlex}>
+              <h3 className={styles.text}>Reservation date</h3>
+              <div className={styles.dateReservation}>
+                <select
+                  className={styles.monthBooking}
+                  name="month"
+                  id="month"
+                  value={month}
+                  onChange={(e) => setMonth(e.target.value)}
+                >
+                  {months.map((month, i) => {
+                    return (
+                      <option value={month} key={i}>
+                        {month}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={styles.dayBooking}
+                  name="day"
+                  id="day"
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}
+                >
+                  {days.map((day, i) => {
+                    return (
+                      <option value={day} key={i}>
+                        {day}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={styles.yearBooking}
+                  name="year"
+                  id="year"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                >
+                  {years.map((year, i) => {
+                    return (
+                      <option value={year} key={i}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
               <div className={styles.bookingInputForm}>
                 <h3>Number of seats</h3>
                 <input
@@ -666,9 +724,14 @@ const Booking = () => {
                   className={styles.bookingInput}
                 />
               </div>
-              <button className={styles.bookingOrder} onClick={sendReservation}>
+              <motion.button
+                className={styles.bookingOrder}
+                onClick={sendReservation}
+                whileHover={{ rotate: [0, -10, 10, 0] }}
+              >
+                {/* <Loading /> */}
                 ORDER
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
