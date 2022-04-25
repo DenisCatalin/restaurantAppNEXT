@@ -2,7 +2,6 @@ import styles from "./MenuItem.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { getItemById } from "../../lib/menuFetch";
 import Modal from "react-modal";
 import Ingredient from "../ingredient/ingredient";
@@ -79,7 +78,10 @@ function Content({ id, img, dataMeal }) {
           className={styles.modalAddToCart}
           whileHover={{ rotate: [0, 5, -5, 0] }}
           whileTap={{ scale: 0.8 }}
-          onClick={() => dispatch(addToCart(meal))}
+          onClick={() => {
+            dispatch(addToCart(meal));
+            console.log(meal.idMeal, meal.strMeal, meal.strMealThumb, 9.99);
+          }}
         >
           <Image
             src={"/static/add_to_cart.svg"}
@@ -112,6 +114,7 @@ const MenuItem = ({ items }) => {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
+    console.log(isOpen);
   };
   const { idMeal, strMeal, strMealThumb } = items;
 
@@ -122,53 +125,51 @@ const MenuItem = ({ items }) => {
   }, []);
 
   return (
-    <Link href={isOpen ? "/menu" : `#${idMeal}`}>
-      <div className={styles.container}>
-        <div className={styles.textSide} onClick={toggleOpen}>
-          <h1 className={styles.mealName}>
-            {strMeal.length > 35 ? strMeal.substring(0, 28) + "..." : strMeal}
-          </h1>
-          <h2 className={styles.mealDescription}>
-            {meal.strInstructions &&
-              (meal.strInstructions.length > 500
-                ? meal.strInstructions.substring(0, 220) + "..."
-                : meal.strInstructions.substring(0, 220) + "...")}
-          </h2>
-          <h1 className={styles.mealPrice}>
-            <span className={styles.dollar}>$</span>9.99
-          </h1>
-        </div>
-        <div className={styles.imageCard} onClick={toggleOpen}>
-          <Image
-            src={strMealThumb}
-            alt={strMeal}
-            width={120}
-            height={120}
-            blurDataURL={strMealThumb}
-            placeholder="blur"
-            className={styles.itemImage}
-          />
-        </div>
-        <Modal
-          isOpen={isOpen}
-          className={styles.modal}
-          contentLabel="Watch the video"
-          overlayClassName={styles.overlay}
-        >
-          <div className={styles.modalContainer}>
-            <motion.div
-              className={styles.modalClose}
-              onClick={toggleOpen}
-              initial={{ scale: 0.9 }}
-              whileHover={{ rotate: 180, scale: 1 }}
-            >
-              <h1>X</h1>
-            </motion.div>
-            <Content id={idMeal} img={strMealThumb} dataMeal={meal} />
-          </div>
-        </Modal>
+    <div className={styles.container}>
+      <div className={styles.textSide} onClick={toggleOpen}>
+        <h1 className={styles.mealName}>
+          {strMeal.length > 35 ? strMeal.substring(0, 28) + "..." : strMeal}
+        </h1>
+        <h2 className={styles.mealDescription}>
+          {meal.strInstructions &&
+            (meal.strInstructions.length > 500
+              ? meal.strInstructions.substring(0, 220) + "..."
+              : meal.strInstructions.substring(0, 220) + "...")}
+        </h2>
+        <h1 className={styles.mealPrice}>
+          <span className={styles.dollar}>$</span>9.99
+        </h1>
       </div>
-    </Link>
+      <div className={styles.imageCard} onClick={toggleOpen}>
+        <Image
+          src={strMealThumb}
+          alt={strMeal}
+          width={120}
+          height={120}
+          blurDataURL={strMealThumb}
+          placeholder="blur"
+          className={styles.itemImage}
+        />
+      </div>
+      <Modal
+        isOpen={isOpen}
+        className={styles.modal}
+        contentLabel="Watch the video"
+        overlayClassName={styles.overlay}
+      >
+        <div className={styles.modalContainer}>
+          <motion.div
+            className={styles.modalClose}
+            onClick={toggleOpen}
+            initial={{ scale: 0.9 }}
+            whileHover={{ rotate: 180, scale: 1 }}
+          >
+            <h1>X</h1>
+          </motion.div>
+          <Content id={idMeal} img={strMealThumb} dataMeal={meal} />
+        </div>
+      </Modal>
+    </div>
   );
 };
 

@@ -187,14 +187,6 @@ const Booking = () => {
       "November",
       "December",
     ];
-
-    // Axios.post("http://localhost:3001/updateBookingStats", {
-    //   currentMonth: months[currentMonth],
-    //   currentDay: currentDay,
-    // })
-    //   .then((response) => console.log(response))
-    //   .catch((err) => console.log(err));
-
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
     setTable3((prevState) => ({ ...prevState, selected: false }));

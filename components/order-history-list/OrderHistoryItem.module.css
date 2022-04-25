@@ -1,0 +1,102 @@
+.bar {
+    border-bottom: 2px solid var(--mainColor);
+    padding: 0.5em;
+    user-select: none;
+    cursor: pointer;
+}
+
+.historyText {
+    color: var(--textColor);
+    width: 100%;
+    height: 50%;
+    font-size: 1.1em;
+}
+
+.spans {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* transform: translateY(-20%); */
+}
+
+.spanActive {
+    width: 15%;
+    text-align: center;
+    background-color: var(--availableSeat);
+    border-radius: 10px;
+    padding: .3rem;
+}
+
+.spanHistory2 {
+  width: 40%;
+  text-align: center;
+  background-color: var(--Background);
+  border-radius: 10px;
+  padding: .3rem;
+  color: var(--textColor);
+}
+
+.spanDetails {
+  width: 40%;
+  text-align: center;
+  background-color: rgb(110, 62, 13);
+  border-radius: 10px;
+  padding: .3rem;
+  color: var(--textColor);
+}
+
+.modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  
+    width: 100%;
+    height: 100%;
+    bottom: 40px;
+    background-color: var(--navbarBackground70);
+    backdrop-filter: blur(10px);
+    top: 0;
+  
+    outline: none;
+    z-index:9999;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .modalContainer {
+    width: 35%;
+    height: 65vh;
+    background: var(--Background);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+    color: var(--textColor);
+  }
+
+  .modalContainer h1 {
+    text-align: center;
+  }
+
+  .listOfItems {
+    width: 100%;
+    height: 40vh;
+    overflow: auto;
+  }
+
+  .modalFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

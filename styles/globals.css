@@ -25,6 +25,7 @@ a {
 
 :root {
   --darkBackground: #171717;
+  --darkBackground70: #171717b0;
   --btnBackground: rgba(73, 73, 73, 0.6);
   --navbarBackground: rgba(23, 23, 23, 0.3);
   --mainColor: #ed932b;

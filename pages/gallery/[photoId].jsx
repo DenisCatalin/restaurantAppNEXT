@@ -9,6 +9,7 @@ import useRedirectUser from "../../utils/redirectUser";
 import moment from "moment";
 import { useState, useEffect, useRef } from "react";
 import Comment from "../../components/comments/comments";
+import Loading from "../../components/loading-button/loading-button";
 
 export async function getServerSideProps(context) {
   const { userId } = await useRedirectUser(context);
@@ -68,7 +69,6 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
       const likes = await getLike.json();
       setLike(likes?.photoLikes?.data?.likes[0]?.like);
     }
-    // console.log(likes.photoLikes.data.likes.length);
   }, [displayName]);
 
   useEffect(async () => {
@@ -103,9 +103,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
       });
       const data = await postComment.json();
       setNewComment(data);
-      setTimeout(() => {
-        setSendingComment(false);
-      }, 10000);
+      setSendingComment(false);
     } else console.log("Anti-spam");
   };
 
@@ -214,18 +212,22 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
               </div>
             </div>
             <div className={styles.commentInput}>
-              <input
-                type="text"
-                ref={commentInput}
-                value={comment}
-                className={styles.inputComment}
-                onChange={(e) => setComment(e.target.value)}
-                onKeyPress={(event) => {
-                  if (event.key === "Enter") {
-                    sendComment();
-                  }
-                }}
-              />
+              {sendingComment ? (
+                <Loading />
+              ) : (
+                <input
+                  type="text"
+                  ref={commentInput}
+                  value={comment}
+                  className={styles.inputComment}
+                  onChange={(e) => setComment(e.target.value)}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      sendComment();
+                    }
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>

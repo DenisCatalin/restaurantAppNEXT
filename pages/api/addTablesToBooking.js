@@ -2,6 +2,7 @@ import {
   addReservation,
   modifyReservation,
   checkReservation,
+  addToBookingHistory,
 } from "../../lib/db/hasura";
 
 export default async function BookTables(req, res) {
@@ -10,7 +11,7 @@ export default async function BookTables(req, res) {
       const token = req ? req.cookies?.token : null;
       const tables = req ? JSON.parse(req.headers.body).tables : null;
       const issuer = req ? JSON.parse(req.headers.body).issuer : null;
-      //   const seats = req ? JSON.parse(req.headers.body).seats : null;
+      const seats = req ? JSON.parse(req.headers.body).seats : null;
       const date = req ? JSON.parse(req.headers.body).date : null;
       const currentDate = req ? JSON.parse(req.headers.body).currentDate : null;
 
@@ -18,30 +19,55 @@ export default async function BookTables(req, res) {
       const exist = check?.data?.booking?.length;
       const value = check?.data?.booking[0]?.bookingTables;
 
-      let defaultValue = value;
-      const array2 = defaultValue.split("|");
-      tables.forEach((i) => {
-        array2[i - 1] = 1;
-      });
-
       if (exist === 0) {
+        const defaultValue = "0|0|0|0|0|0|0|0|0";
+        const array2 = defaultValue.split("|");
+        tables.forEach((i) => {
+          array2[i - 1] = 1;
+        });
         const addBooking = await addReservation(
           token,
           array2.toString().replaceAll(",", "|"),
-          issuer,
           date,
           currentDate
         );
 
-        res.send({ message: "Complete", addBooking });
+        const addBookingForUser = await addToBookingHistory(
+          token,
+          issuer,
+          seats,
+          currentDate,
+          date,
+          tables.toString()
+        );
+
+        console.log("[addTablesToBooking] tables", tables);
+
+        res.send({ message: "Complete", addBooking, addBookingForUser });
       } else {
-        const addBooking = await modifyReservation(
+        const defaultValue = value;
+        const array2 = defaultValue.split("|");
+        tables.forEach((i) => {
+          array2[i - 1] = 1;
+        });
+        const modifyBooking = await modifyReservation(
           token,
           date,
           array2.toString().replaceAll(",", "|")
         );
 
-        res.send({ message: "Complete", addBooking });
+        console.log("[addTablesToBooking]", date);
+
+        const addBookingForUser = await addToBookingHistory(
+          token,
+          issuer,
+          seats,
+          currentDate,
+          date,
+          tables
+        );
+
+        res.send({ message: "Complete", modifyBooking, addBookingForUser });
       }
     } catch (error) {
       console.error("Something went wrong booking the tables", error);

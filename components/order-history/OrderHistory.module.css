@@ -1,0 +1,84 @@
+.bookingHistory {
+    width: 25%;
+    min-height: 70vh;
+    border: 2px solid var(--mainColor);
+    background-color: var(--darkBackground70);
+    box-shadow: 0 0 5px var(--mainColor), inset 0 0 5px var(--mainColor);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.text {
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    color: var(--textColor);
+    /* font-size: 2em; */
+}
+
+.history {
+    width: 100%;
+    height: 60vh;
+}
+
+.historyList {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.historyItem {
+    width: 100%;
+    height: 20%;
+    border-top: 1px solid var(--mainColor);
+    border-bottom: 1px solid var(--mainColor);
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.historyText {
+    color: var(--textColor);
+    width: 100%;
+    height: 50%;
+    font-size: 1.1em;
+}
+
+.spans {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* transform: translateY(-20%); */
+}
+
+.spanInactive {
+    width: 20%;
+    text-align: center;
+    background-color: var(--errorBackground);
+    border-radius: 10px;
+    padding: .3rem;
+}
+
+.spanActive {
+    width: 15%;
+    text-align: center;
+    background-color: var(--availableSeat);
+    border-radius: 10px;
+    padding: .3rem;
+}
+
+.spanHistory2 {
+    width: 40%;
+    text-align: center;
+    background-color: var(--Background);
+    border-radius: 10px;
+    padding: .3rem;
+    color: var(--textColor);
+}

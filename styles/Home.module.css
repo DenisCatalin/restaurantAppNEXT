@@ -53,40 +53,6 @@
   align-items: center;
 }
 
-.bannerButton {
-  width: 45%;
-  height: 100%;
-  background-color: var(--btnBackground);
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  color: white;
-  font-size: 2em;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.32);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.buttonChangeBG {
-  position: absolute;
-  width: 400px;
-  height: 120px;
-  background: var(--mainColor50);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 35%;
-}
-
-.buttonText {
-  z-index: 555;
-  transition: 0.3s ease-in-out;
-}
-
 .socialMedia {
   width: 10%;
   height: 40vh;
@@ -97,65 +63,4 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-}
-
-.socialMediaCard:nth-child(1) {
-  color: white;
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
-  background: var(--darkBackground);
-  box-shadow: inset 5px 5px 5px #000000, inset -5px -5px 5px #222222,
-    2px 2px 2px var(--mainColor50);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.socialMediaCard:nth-child(2) {
-  color: white;
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
-  background: var(--darkBackground);
-  box-shadow: inset 5px 5px 5px #000000, inset -5px -5px 5px #222222,
-    2px 2px 2px var(--mainColor50);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.socialMediaCard:nth-child(3) {
-  color: white;
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
-  background: var(--darkBackground);
-  box-shadow: inset 5px 5px 5px #000000, inset -5px -5px 5px #222222,
-    2px 2px 2px var(--mainColor50);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.socialMediaCard:nth-child(4) {
-  color: white;
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
-  background: var(--darkBackground);
-  box-shadow: inset 5px 5px 5px #000000, inset -5px -5px 5px #222222,
-    2px 2px 2px var(--mainColor50);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@keyframes opacity {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }

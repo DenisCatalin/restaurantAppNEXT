@@ -1,0 +1,13 @@
+.socialMediaCard {
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: var(--darkBackground);
+  box-shadow: inset 5px 5px 5px #000000, inset -5px -5px 5px #222222,
+    2px 2px 2px var(--mainColor50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

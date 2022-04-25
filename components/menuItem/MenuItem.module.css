@@ -50,15 +50,6 @@
   color: var(--mainColor);
 }
 
-.overlay {
-  width: 100%;
-  min-height: 100vh;
-  background: rgb(39, 39, 39);
-  pointer-events: auto;
-  z-index: 1000;
-  padding: 1rem;
-}
-
 .modal {
   position: absolute;
   /** centers modal **/

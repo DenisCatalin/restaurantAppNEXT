@@ -1,5 +1,5 @@
 import styles from "./cart-item.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   incrementQuantity,
   decrementQuantity,
@@ -9,7 +9,6 @@ import {
 const CartItem = ({ cartItem }) => {
   const { idMeal, strMeal, strMealThumb, quantity } = cartItem;
 
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
     <div className={styles.cartItem}>

@@ -201,7 +201,13 @@ const Header = () => {
             >
               {loggedIn ? (
                 <Image
-                  src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+                  src={
+                    loadingProfilePic
+                      ? "/static/logo.svg"
+                      : profilePic === undefined
+                      ? "/static/logo.svg"
+                      : profilePic
+                  }
                   alt=""
                   width={70}
                   height={70}
