@@ -5,14 +5,14 @@ import styles from "./photoId.module.css";
 import Image from "next/image";
 import NavBar from "../../components/navbar/navbar";
 import { motion } from "framer-motion";
-import useRedirectUser from "../../utils/redirectUser";
+import UseRedirectUser from "../../utils/redirectUser";
 import moment from "moment";
 import { useState, useEffect, useRef } from "react";
 import Comment from "../../components/comments/comments";
 import Loading from "../../components/loading-button/loading-button";
 
 export async function getServerSideProps(context) {
-  const { userId } = await useRedirectUser(context);
+  const { userId } = await UseRedirectUser(context);
   if (!userId) {
     return {
       props: {},

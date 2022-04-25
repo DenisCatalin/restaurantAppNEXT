@@ -34,7 +34,7 @@ function Content({ id, img, dataMeal }) {
 
   const comp = ingredients2.map((ing, i) => {
     const string = `https://www.themealdb.com/images/ingredients/${ing}.png`;
-    return <Ingredient text={ing} img={string} key={i} />;
+    return <Ingredient key={i} text={ing} img={string} />;
   });
 
   return (

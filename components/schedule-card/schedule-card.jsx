@@ -47,7 +47,7 @@ function Content({ id, name }) {
               </div>
             ) : (
               schedule.map((item, i) => (
-                <tr className={styles.tr}>
+                <tr key={i} className={styles.tr}>
                   <td className={styles.td}>{i + 1}</td>
                   <td className={styles.td}>{item.eventType}</td>
                   <td className={styles.td}>{item.eventStartHour}</td>
