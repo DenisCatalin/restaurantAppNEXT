@@ -13,11 +13,11 @@ const CartItem = ({ cartItem }) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.cartItemImage}>
-        <img src={strMealThumb} alt="" width={80} height={80} />
+        <img src={strMealThumb} alt="" className={styles.mealImage} />
       </div>
       <div className={styles.cartItemDetails}>
         <h2 className={styles.cartItemTitle}>
-          {strMeal.length > 40 ? strMeal.substring(0, 40) + "..." : strMeal}
+          {strMeal.length > 40 ? strMeal.substring(0, 35) + "..." : strMeal}
         </h2>
         <div className={styles.cartItemQuantity}>
           <img

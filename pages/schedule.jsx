@@ -5,6 +5,8 @@ import styles from "../styles/Schedule.module.css";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import Head from "next/head";
 import NavBar from "../components/navbar/navbar";
+import clx from "classnames";
+import { useState } from "react";
 
 const Schedule = () => {
   const container = {
@@ -89,8 +91,8 @@ const Schedule = () => {
             ))}
           </motion.div>
         </AnimateSharedLayout>
-        <NavBar showNav={false} showOpen={true} />
       </div>
+      <NavBar showNav={false} showOpen={true} />
     </div>
   );
 };

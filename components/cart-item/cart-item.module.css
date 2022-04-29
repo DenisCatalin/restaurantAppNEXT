@@ -39,3 +39,12 @@
   .hover {
     cursor: pointer;
   }
+
+  @media screen and (width: 1024px) and (height: 600px) {
+    .cartItemTitle {
+      font-size: .8em;
+    }
+    .cartItemImage {
+      height: 10vh;
+    }
+  }

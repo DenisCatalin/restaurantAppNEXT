@@ -11,10 +11,8 @@ import { addToCart } from "../../redux/cart.slice";
 Modal.setAppElement("#__next");
 
 function Content({ id, img, dataMeal }) {
-  const price = { price: 9.99 };
-  const meal = { ...dataMeal, ...price };
+  const meal = { ...dataMeal };
   const [isHover, setIsHover] = useState(false);
-  const dispatch = useDispatch();
 
   let ingredients = [];
   let ingredients2 = [];
@@ -73,38 +71,6 @@ function Content({ id, img, dataMeal }) {
         <h1>{meal.strArea}</h1>
       </div>
       <div className={styles.modalIngredientsContainer}>{comp}</div>
-      <div className={styles.modalButtons}>
-        <motion.button
-          className={styles.modalAddToCart}
-          whileHover={{ rotate: [0, 5, -5, 0] }}
-          whileTap={{ scale: 0.8 }}
-          onClick={() => {
-            dispatch(addToCart(meal));
-            console.log(meal.idMeal, meal.strMeal, meal.strMealThumb, 9.99);
-          }}
-        >
-          <Image
-            src={"/static/add_to_cart.svg"}
-            alt=""
-            width={30}
-            height={30}
-          />
-          <p>Add to cart</p>
-        </motion.button>
-        <motion.button
-          className={styles.modalAddToFav}
-          whileHover={{ rotate: [0, 5, -5, 0] }}
-          whileTap={{ scale: 0.8 }}
-        >
-          <Image
-            src={"/static/add_to_favourite.svg"}
-            alt=""
-            width={30}
-            height={30}
-          />
-          <p>Add to favourite</p>
-        </motion.button>
-      </div>
     </>
   );
 }
@@ -118,10 +84,14 @@ const MenuItem = ({ items }) => {
   };
   const { idMeal, strMeal, strMealThumb } = items;
 
+  const price = { price: 9.99 };
+
   const [meal, setMeal] = useState({});
+  const dispatch = useDispatch();
   useEffect(async () => {
     const data = await getItemById(idMeal);
-    setMeal(data);
+    const data2 = { ...data, ...price };
+    setMeal(data2);
   }, []);
 
   return (
@@ -154,7 +124,7 @@ const MenuItem = ({ items }) => {
       <Modal
         isOpen={isOpen}
         className={styles.modal}
-        contentLabel="Watch the video"
+        contentLabel="Menu Item"
         overlayClassName={styles.overlay}
       >
         <div className={styles.modalContainer}>
@@ -167,6 +137,38 @@ const MenuItem = ({ items }) => {
             <h1>X</h1>
           </motion.div>
           <Content id={idMeal} img={strMealThumb} dataMeal={meal} />
+          <div className={styles.modalButtons}>
+            <motion.button
+              className={styles.modalAddToCart}
+              whileHover={{ rotate: [0, 5, -5, 0] }}
+              whileTap={{ scale: 0.8 }}
+              onClick={() => {
+                dispatch(addToCart(meal));
+                toggleOpen();
+              }}
+            >
+              <Image
+                src={"/static/add_to_cart.svg"}
+                alt=""
+                width={30}
+                height={30}
+              />
+              <p>Add to cart</p>
+            </motion.button>
+            <motion.button
+              className={styles.modalAddToFav}
+              whileHover={{ rotate: [0, 5, -5, 0] }}
+              whileTap={{ scale: 0.8 }}
+            >
+              <Image
+                src={"/static/add_to_favourite.svg"}
+                alt=""
+                width={30}
+                height={30}
+              />
+              <p>Add to favourite</p>
+            </motion.button>
+          </div>
         </div>
       </Modal>
     </div>

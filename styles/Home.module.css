@@ -64,3 +64,105 @@
   align-items: center;
   flex-direction: column;
 }
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+  .bannerContainer h1 {
+    width: 100%;
+    font-size: 6em;
+    text-align: center;
+  }
+  .bannerContainer h3 {
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+  }
+  .buttonsContainer {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1024px) and (max-height: 600px) {
+  .bannerContainer h1 {
+    width: 100%;
+    font-size: 3.5em;
+    text-align: center;
+  }
+  .bannerContainer h2 {
+    width: 100%;
+    font-size: 2.2em;
+    text-align: center;
+  }
+  .bannerContainer h3 {
+    width: 100%;
+    font-size: 1.8em;
+    text-align: center;
+  }
+  .buttonsContainer {
+    width: 40%;
+    min-height: 12vh;
+  }
+}
+
+@media screen and (min-width: 764px) and (min-height: 1000px) {
+  .socialMedia {
+    height: 30vh;
+    top: 68%;
+  }
+  .bannerContainer h1 {
+    width: 100%;
+    font-size: 4.4em;
+    text-align: center;
+  }
+  .bannerContainer h2 {
+    width: 100%;
+    font-size: 2.8em;
+    text-align: center;
+  }
+  .bannerContainer h3 {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+  }
+  .buttonsContainer {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+  .bannerContainer h1 {
+    width: 100%;
+    font-size: 5em;
+    text-align: center;
+  }
+  .bannerContainer h2 {
+    width: 100%;
+    font-size: 3em;
+    text-align: center;
+  }
+  .bannerContainer h3 {
+    width: 100%;
+    font-size: 1.8em;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+  .bannerContainer h1 {
+    width: 100%;
+    font-size: 2.1em;
+    text-align: center;
+  }
+  .bannerContainer h2 {
+    width: 100%;
+    font-size: 1.7em;
+    text-align: center;
+  }
+  .bannerContainer h3 {
+    width: 100%;
+    font-size: .6em;
+    text-align: center;
+  }
+  .buttonsContainer {
+    width: 80%;
+  }
+}

@@ -31,3 +31,25 @@
     z-index: 555;
     transition: 0.3s ease-in-out;
   }
+
+  @media screen and (min-width: 764px) and (min-height: 1000px) {
+    .bannerButton {
+      height: 80%;
+    }
+  }
+
+  @media screen and (max-width: 1050px) and (max-height: 800px) {
+    .bannerButton {
+      font-size: 1.6em;
+      width: 45%;
+      height: 90%;
+    }
+  }
+
+  @media screen and (max-width: 380px) and (max-height: 790px) {
+    .bannerButton {
+      font-size: 1.4em;
+      width: 45%;
+      height: 80%;
+    }
+  }

@@ -86,3 +86,69 @@
   background: white;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+  .navbarContainer {
+    width: 40%;
+  }
+  .openNav {
+    left: 94%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (width: 1024px) and (height: 600px) {
+  .navbarContainer {
+    width: 45%;
+    height: 10%;
+  }
+  .openNav {
+    top: 87%;
+    left: 92%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (min-width: 764px) and (min-height: 1000px) {
+  .navbarContainer {
+    width: 60%;
+    height: 7%;
+  }
+  .openNav {
+    top: 87%;
+    left: 90%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+  .navbarContainer {
+    width: 45%;
+    height: 9%;
+  }
+  .openNav {
+    top: 90%;
+    left: 93%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1124px) {
+  .openNav {
+    top: 88%;
+    left: 90%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+  .navbarContainer {
+    width: 98%;
+    height: 9%;
+  }
+}  

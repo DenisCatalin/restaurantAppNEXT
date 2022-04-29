@@ -12,6 +12,7 @@ Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...
 sistem de notificari
 sistem de chat
 fetch la userdetails doar daca nu e pus nimic in redux
+rezolvare fetch la scheduleday. sa scot cookies 
 */
 
 export default function Home() {

@@ -13,6 +13,7 @@ function Content({ id, name }) {
     const data = await res.json();
     setSchedule(data.getScheduleQuery.data.schedule);
     setIsLoading(false);
+    window.scrollTo(0, 0);
   }, []);
 
   console.log(schedule);

@@ -6,7 +6,7 @@ import { magic } from "../../lib/magic-client";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
-import CartItem from "../cart-item/cart-item";
+import HeaderCart from "../header-cart/header-cart";
 Modal.setAppElement("#__next");
 
 const Header = () => {
@@ -161,27 +161,31 @@ const Header = () => {
         whileHover={{ rotate: [0, -5, 5, 0] }}
         whileTap={{ scale: 0.8 }}
       >
-        <Image
-          src={"/static/logo.svg"}
-          alt=""
-          width={250}
-          height={70}
-          onClick={handleOnClickLogo}
-          className={styles.logo}
-        />
+        <div className={styles.logoHeader}>
+          <Image
+            src={"/static/logo.svg"}
+            alt=""
+            onClick={handleOnClickLogo}
+            className={styles.logo}
+            layout="fill"
+          />
+        </div>
       </motion.div>
       <div className={styles.headerTools}>
         {loggedIn ? (
-          <div className={styles.cartContainer} onClick={handleToggleCart}>
+          <motion.div
+            className={styles.cartContainer}
+            onClick={handleToggleCart}
+            whileTap={{ scale: 0.9 }}
+          >
             <Image
               src={"/static/header_cart.svg"}
               alt="Shopping Cart"
-              width={50}
-              height={50}
+              layout="fill"
               onClick={handleToggleModal}
             />
             <span className={styles.countCartItems}>{getItemsCount()}</span>
-          </div>
+          </motion.div>
         ) : null}
         <motion.div
           className={styles.usernameContainer}
@@ -200,19 +204,20 @@ const Header = () => {
               }
             >
               {loggedIn ? (
-                <Image
-                  src={
-                    loadingProfilePic
-                      ? "/static/logo.svg"
-                      : profilePic === undefined
-                      ? "/static/logo.svg"
-                      : profilePic
-                  }
-                  alt=""
-                  width={70}
-                  height={70}
-                  className={styles.profilePic}
-                />
+                <div className={styles.headerProfilePic}>
+                  <Image
+                    src={
+                      loadingProfilePic
+                        ? "/static/logo.svg"
+                        : profilePic === undefined
+                        ? "/static/logo.svg"
+                        : profilePic
+                    }
+                    alt=""
+                    layout="fill"
+                    className={styles.profilePic}
+                  />
+                </div>
               ) : (
                 <h3 style={{ cursor: "pointer" }}>Login</h3>
               )}
@@ -223,7 +228,6 @@ const Header = () => {
       <Modal
         isOpen={toggleModal}
         contentLabel="Change Profile Picture"
-        // onRequestClose={() => router.back()}
         className={styles.modal}
         overlayClassName={styles.overlay}
       >
@@ -284,26 +288,7 @@ const Header = () => {
         className={styles.dropdownCart}
         animate={{ scale: toggleCart ? 1 : 0 }}
       >
-        <h1>Your Cart</h1>
-        <div className={styles.cartItems}>
-          {cart.length === 0 ? (
-            <h1>Your Cart is Empty</h1>
-          ) : (
-            <>
-              {cart.map((item, i) => {
-                return <CartItem key={i} cartItem={item} />;
-              })}
-            </>
-          )}
-        </div>
-        {cart.length === 0 ? null : (
-          <button
-            className={styles.cartCheckout}
-            onClick={() => router.push("/cart")}
-          >
-            Go To Checkout
-          </button>
-        )}
+        <HeaderCart cart={cart} />
       </motion.div>
     </motion.div>
   );
