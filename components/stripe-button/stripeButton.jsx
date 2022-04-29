@@ -9,13 +9,15 @@ const StripeCheckoutButton = ({ price }) => {
   const [issuer, setIssuer] = useState();
   const [email, setEmail] = useState();
 
-  useEffect(async () => {
-    const res = await fetch("/api/userDetails");
-    const data = await res.json();
-    console.log(data);
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/userDetails");
+      const data = await res.json();
+      console.log(data);
 
-    setIssuer(data?.userDetails?.data?.users[0].issuer);
-    setEmail(data?.userDetails?.data?.users[0].email);
+      setIssuer(data?.userDetails?.data?.users[0].issuer);
+      setEmail(data?.userDetails?.data?.users[0].email);
+    })();
   }, []);
 
   const finalPrice = (priceForStripe / 100).toFixed(2);

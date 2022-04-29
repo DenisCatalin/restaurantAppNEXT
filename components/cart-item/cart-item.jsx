@@ -1,5 +1,6 @@
 import styles from "./cart-item.module.css";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 import {
   incrementQuantity,
   decrementQuantity,
@@ -13,14 +14,16 @@ const CartItem = ({ cartItem }) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.cartItemImage}>
-        <img src={strMealThumb} alt="" className={styles.mealImage} />
+        <div className={styles.mealImage}>
+          <Image src={strMealThumb} alt="" layout="fill" />
+        </div>
       </div>
       <div className={styles.cartItemDetails}>
         <h2 className={styles.cartItemTitle}>
           {strMeal.length > 40 ? strMeal.substring(0, 35) + "..." : strMeal}
         </h2>
         <div className={styles.cartItemQuantity}>
-          <img
+          <Image
             src={"/static/previous.svg"}
             alt=""
             width={25}
@@ -29,7 +32,7 @@ const CartItem = ({ cartItem }) => {
             className={styles.hover}
           />
           <p>{quantity}</p>
-          <img
+          <Image
             src={"/static/next.svg"}
             alt=""
             width={25}
@@ -38,7 +41,7 @@ const CartItem = ({ cartItem }) => {
             className={styles.hover}
           />
         </div>
-        <img
+        <Image
           src={"/static/close.svg"}
           alt=""
           width={25}

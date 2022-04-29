@@ -89,11 +89,13 @@ const Booking = () => {
   const [issuer, setIssuer] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(async () => {
-    const res = await fetch("/api/userDetails");
-    const data = await res.json();
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/userDetails");
+      const data = await res.json();
 
-    setIssuer(data?.userDetails?.data?.users[0].issuer);
+      setIssuer(data?.userDetails?.data?.users[0].issuer);
+    })();
   }, []);
 
   const showNotification = (content, color) => {
@@ -170,23 +172,6 @@ const Booking = () => {
     });
     const data = await res.json();
     console.log(data);
-    let d = new Date();
-    let currentMonth = d.getMonth();
-    let currentDay = d.getDate();
-    let months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
     setTable3((prevState) => ({ ...prevState, selected: false }));
@@ -220,72 +205,74 @@ const Booking = () => {
     setTablesToSelect(Math.round(seatsNumber / 4));
   }, [seatsNumber]);
 
-  useEffect(async () => {
-    if (
-      month !== "" &&
-      day !== "" &&
-      year !== "" &&
-      month !== "Month" &&
-      day !== "Day" &&
-      year !== "Year"
-    ) {
-      setIsLoading(true);
-      const dateString = `${month}-${day}-${year}`;
-      const res = await fetch("/api/checkTablesForBooking", {
-        method: "GET",
-        headers: {
-          body: JSON.stringify({
-            date: dateString,
-          }),
-        },
-      });
+  useEffect(() => {
+    (async () => {
+      if (
+        month !== "" &&
+        day !== "" &&
+        year !== "" &&
+        month !== "Month" &&
+        day !== "Day" &&
+        year !== "Year"
+      ) {
+        setIsLoading(true);
+        const dateString = `${month}-${day}-${year}`;
+        const res = await fetch("/api/checkTablesForBooking", {
+          method: "GET",
+          headers: {
+            body: JSON.stringify({
+              date: dateString,
+            }),
+          },
+        });
 
-      const data = await res.json();
-      console.log("data", data);
-      const tables = data?.check?.data?.booking.length;
-      console.log("tables", tables);
-      if (tables === 0) {
-        setTable1((prevState) => ({ ...prevState, reserved: false }));
-        setTable2((prevState) => ({ ...prevState, reserved: false }));
-        setTable3((prevState) => ({ ...prevState, reserved: false }));
-        setTable4((prevState) => ({ ...prevState, reserved: false }));
-        setTable5((prevState) => ({ ...prevState, reserved: false }));
-        setTable6((prevState) => ({ ...prevState, reserved: false }));
-        setTable7((prevState) => ({ ...prevState, reserved: false }));
-        setTable8((prevState) => ({ ...prevState, reserved: false }));
-        setTable9((prevState) => ({ ...prevState, reserved: false }));
-      } else {
-        const seats = data?.check?.data?.booking[0].bookingTables.split("|");
-        if (seats[0] === "1")
-          setTable1((prevState) => ({ ...prevState, reserved: true }));
-        else setTable1((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[1] === "1")
-          setTable2((prevState) => ({ ...prevState, reserved: true }));
-        else setTable2((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[2] === "1")
-          setTable3((prevState) => ({ ...prevState, reserved: true }));
-        else setTable3((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[3] === "1")
-          setTable4((prevState) => ({ ...prevState, reserved: true }));
-        else setTable4((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[4] === "1")
-          setTable5((prevState) => ({ ...prevState, reserved: true }));
-        else setTable5((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[5] === "1")
-          setTable6((prevState) => ({ ...prevState, reserved: true }));
-        else setTable6((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[6] === "1")
-          setTable7((prevState) => ({ ...prevState, reserved: true }));
-        else setTable7((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[7] === "1")
-          setTable8((prevState) => ({ ...prevState, reserved: true }));
-        else setTable8((prevState) => ({ ...prevState, reserved: false }));
-        if (seats[8] === "1")
-          setTable9((prevState) => ({ ...prevState, reserved: true }));
-        else setTable9((prevState) => ({ ...prevState, reserved: false }));
+        const data = await res.json();
+        console.log("data", data);
+        const tables = data?.check?.data?.booking.length;
+        console.log("tables", tables);
+        if (tables === 0) {
+          setTable1((prevState) => ({ ...prevState, reserved: false }));
+          setTable2((prevState) => ({ ...prevState, reserved: false }));
+          setTable3((prevState) => ({ ...prevState, reserved: false }));
+          setTable4((prevState) => ({ ...prevState, reserved: false }));
+          setTable5((prevState) => ({ ...prevState, reserved: false }));
+          setTable6((prevState) => ({ ...prevState, reserved: false }));
+          setTable7((prevState) => ({ ...prevState, reserved: false }));
+          setTable8((prevState) => ({ ...prevState, reserved: false }));
+          setTable9((prevState) => ({ ...prevState, reserved: false }));
+        } else {
+          const seats = data?.check?.data?.booking[0].bookingTables.split("|");
+          if (seats[0] === "1")
+            setTable1((prevState) => ({ ...prevState, reserved: true }));
+          else setTable1((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[1] === "1")
+            setTable2((prevState) => ({ ...prevState, reserved: true }));
+          else setTable2((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[2] === "1")
+            setTable3((prevState) => ({ ...prevState, reserved: true }));
+          else setTable3((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[3] === "1")
+            setTable4((prevState) => ({ ...prevState, reserved: true }));
+          else setTable4((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[4] === "1")
+            setTable5((prevState) => ({ ...prevState, reserved: true }));
+          else setTable5((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[5] === "1")
+            setTable6((prevState) => ({ ...prevState, reserved: true }));
+          else setTable6((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[6] === "1")
+            setTable7((prevState) => ({ ...prevState, reserved: true }));
+          else setTable7((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[7] === "1")
+            setTable8((prevState) => ({ ...prevState, reserved: true }));
+          else setTable8((prevState) => ({ ...prevState, reserved: false }));
+          if (seats[8] === "1")
+            setTable9((prevState) => ({ ...prevState, reserved: true }));
+          else setTable9((prevState) => ({ ...prevState, reserved: false }));
+        }
+        setIsLoading(false);
       }
-      setIsLoading(false);
-    }
+    })();
   }, [month, day, year]);
 
   function tableButton(e) {

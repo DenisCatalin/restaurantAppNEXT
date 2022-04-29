@@ -14,20 +14,25 @@
     position: relative;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
   }
   
+  .mealImage {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  }
+
   .cartItemDetails {
     width: 65%;
     height:auto;
     display: flex;
     align-items: center;
-    /* flex-direction: column; */
     color: var(--textColor);
   }
   
   .cartItemTitle {
     font-size: .8em;
+    width: 60%;
   }
   
   .cartItemQuantity {

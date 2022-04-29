@@ -28,53 +28,59 @@ const Profile = () => {
   const displayNameInput = useRef(null);
   const addressInput = useRef(null);
 
-  useEffect(async () => {
-    const res = await fetch("/api/userDetails");
-    const data = await res.json();
-    setLoadingBookings(true);
-    setLoadingOrders(true);
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/userDetails");
+      const data = await res.json();
 
-    setProfilePic(data?.userDetails?.data?.users[0].profilePic);
-    setDisplayName(data?.userDetails?.data?.users[0].displayName);
-    setEmail(data?.userDetails?.data?.users[0].email);
-    setAddress(data?.userDetails?.data?.users[0].address);
-    setIsLoadingProfilePic(false);
-    setIsLoading(false);
-    setIssuer(data?.userDetails?.data?.users[0].issuer);
+      setProfilePic(data?.userDetails?.data?.users[0].profilePic);
+      setDisplayName(data?.userDetails?.data?.users[0].displayName);
+      setEmail(data?.userDetails?.data?.users[0].email);
+      setAddress(data?.userDetails?.data?.users[0].address);
+      setIsLoadingProfilePic(false);
+      setIsLoading(false);
+      setIssuer(data?.userDetails?.data?.users[0].issuer);
+    })();
   }, [displayName, address]);
 
-  useEffect(async () => {
-    const res = await fetch("/api/checkBookingHistory", {
-      method: "GET",
-      headers: {
-        body: JSON.stringify({
-          issuer: issuer,
-        }),
-      },
-    });
-    const data = await res.json();
-    setBookings(data?.checkBookingForUser?.reservations);
-    setLoadingBookings(false);
-  }, [loadingBookings]);
-
-  useEffect(async () => {
-    if (orders === undefined || orders.length === 0) {
-      const res = await fetch("/api/checkOrders", {
+  useEffect(() => {
+    console.log("useEffect");
+    (async () => {
+      const res = await fetch("/api/checkBookingHistory", {
         method: "GET",
         headers: {
           body: JSON.stringify({
-            userId: issuer,
+            issuer: issuer,
           }),
         },
       });
       const data = await res.json();
-      if (data !== undefined) {
-        const item = data?.checkOrderForUser;
-        setOrders(item);
+      setBookings(data?.checkBookingForUser?.reservations);
+      setLoadingBookings(false);
+    })();
+  }, [loadingBookings, issuer]);
+
+  useEffect(() => {
+    console.log("useEffect2");
+    (async () => {
+      if (orders === undefined || orders.length === 0) {
+        const res = await fetch("/api/checkOrders", {
+          method: "GET",
+          headers: {
+            body: JSON.stringify({
+              userId: issuer,
+            }),
+          },
+        });
+        const data = await res.json();
+        if (data !== undefined) {
+          const item = data?.checkOrderForUser;
+          setOrders(item);
+        }
+        setLoadingOrders(false);
       }
-      setLoadingOrders(false);
-    }
-  }, [loadingOrders]);
+    })();
+  }, [loadingOrders, issuer, orders]);
 
   const handleEditDisplayName = () => {
     setEditDisplayName(!editDisplayName);
@@ -144,11 +150,13 @@ const Profile = () => {
           ) : (
             <div className={styles.Item}>
               <div className={styles.profilePic}>
-                <img
-                  src={loadingProfilePic ? "/static/logo.svg" : profilePic}
-                  alt={displayName}
-                  className={styles.displayImage}
-                />
+                <div className={styles.displayImage}>
+                  <Image
+                    src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+                    alt={displayName}
+                    layout="fill"
+                  />
+                </div>
               </div>
               <div className={styles.itemContent}>
                 <div className={styles.spaceBetween}>
@@ -164,7 +172,7 @@ const Profile = () => {
                   />
                   <div className={styles.icons}>
                     {editDisplayName ? (
-                      <img
+                      <Image
                         src={"/static/done.svg"}
                         alt="Edit"
                         width={30}
@@ -174,7 +182,7 @@ const Profile = () => {
                       />
                     ) : null}
                     {editDisplayName ? (
-                      <img
+                      <Image
                         src={"/static/close.svg"}
                         alt="Edit"
                         width={30}
@@ -183,7 +191,7 @@ const Profile = () => {
                         onClick={handleEditDisplayName}
                       />
                     ) : (
-                      <img
+                      <Image
                         src={"/static/edit.svg"}
                         alt="Edit"
                         width={30}

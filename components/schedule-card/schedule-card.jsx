@@ -8,15 +8,15 @@ function Content({ id, name }) {
   Cookies.set("scheduleDay", id + 1);
   const [schedule, setSchedule] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(async () => {
-    const res = await fetch("/api/schedule");
-    const data = await res.json();
-    setSchedule(data.getScheduleQuery.data.schedule);
-    setIsLoading(false);
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/schedule");
+      const data = await res.json();
+      setSchedule(data.getScheduleQuery.data.schedule);
+      setIsLoading(false);
+      window.scrollTo(0, 0);
+    })();
   }, []);
-
-  console.log(schedule);
 
   return (
     <motion.div

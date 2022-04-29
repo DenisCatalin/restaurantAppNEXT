@@ -11,11 +11,9 @@ const SocialMedia = ({ name }) => {
       whileTap={{ scale: 0.8 }}
       animate={{ opacity: [0, 1] }}
     >
-      <img
-        src={`/static/${name}.svg`}
-        alt=""
-        className={styles.socialMediaImage}
-      />
+      <div className={styles.socialMediaImage}>
+        <Image src={`/static/${name}.svg`} alt="" layout="fill" />
+      </div>
     </motion.div>
   );
 };

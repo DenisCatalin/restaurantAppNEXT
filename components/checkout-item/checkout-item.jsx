@@ -1,5 +1,6 @@
 import styles from "./CheckoutItem.module.css";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 import {
   incrementQuantity,
   decrementQuantity,
@@ -11,12 +12,15 @@ const CheckoutItem = ({ item }) => {
   return (
     <div className={styles.body}>
       <div className={styles.image}>
-        <img
-          src={item.strMealThumb}
-          height="90"
-          width="90"
-          className={styles.imageCart}
-        />
+        <div className={styles.anotherImage}>
+          <Image
+            src={item.strMealThumb}
+            className={styles.imageCart}
+            width={100}
+            height={100}
+            alt=""
+          />
+        </div>
       </div>
       <p>{item.strMeal}</p>
       <p>
@@ -24,18 +28,20 @@ const CheckoutItem = ({ item }) => {
         {item.price}
       </p>
       <div className={styles.itemQuantity}>
-        <img
+        <Image
           src={"/static/previous.svg"}
-          height="25"
-          width="25"
+          height={25}
+          width={25}
+          alt=""
           className={styles.imageCart}
           onClick={() => dispatch(decrementQuantity(item.idMeal))}
         />
         <p>{item.quantity}</p>
-        <img
+        <Image
           src={"/static/next.svg"}
-          height="25"
-          width="25"
+          height={25}
+          width={25}
+          alt=""
           className={styles.imageCart}
           onClick={() => dispatch(incrementQuantity(item.idMeal))}
         />
@@ -45,10 +51,11 @@ const CheckoutItem = ({ item }) => {
         {item.quantity * item.price}
       </p>
       <div className={styles.buttons}>
-        <img
+        <Image
           src={"/static/close.svg"}
-          height="25"
-          width="25"
+          height={25}
+          width={25}
+          alt=""
           className={styles.imageCart}
           onClick={() => dispatch(removeFromCart(item.idMeal))}
         />

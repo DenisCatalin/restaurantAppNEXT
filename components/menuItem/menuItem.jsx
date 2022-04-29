@@ -84,15 +84,17 @@ const MenuItem = ({ items }) => {
   };
   const { idMeal, strMeal, strMealThumb } = items;
 
-  const price = { price: 9.99 };
-
   const [meal, setMeal] = useState({});
   const dispatch = useDispatch();
-  useEffect(async () => {
-    const data = await getItemById(idMeal);
-    const data2 = { ...data, ...price };
-    setMeal(data2);
-  }, []);
+  useEffect(() => {
+    const price = { price: 9.99 };
+    console.log("ffmm");
+    (async () => {
+      const data = await getItemById(idMeal);
+      const data2 = { ...data, ...price };
+      setMeal(data2);
+    })();
+  }, [idMeal]);
 
   return (
     <div className={styles.container}>

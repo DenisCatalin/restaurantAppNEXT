@@ -12,9 +12,6 @@
       color: var(--textColor);
       font-size: 1.3em;
   }
-  .image {
-    width: 100px;
-  }
   .buttons > * {
     width: 35px;
     height: 35px;

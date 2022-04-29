@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { magic } from "../../lib/magic-client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import HeaderCart from "../header-cart/header-cart";
@@ -22,6 +22,7 @@ const Header = () => {
   const [uploadData, setUploadData] = useState(false);
   const [toggleModal, setTogglemodal] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
+  const isMounted = useRef(true);
 
   const cart = useSelector((state) => state.cart);
 
@@ -29,32 +30,40 @@ const Header = () => {
     return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
   };
 
-  useEffect(async () => {
-    const isLoggedIn = await magic.user.isLoggedIn();
-    if (isLoggedIn) {
-      try {
-        const { email } = await magic.user.getMetadata();
-        if (email) {
-          const didToken = await magic.user.getIdToken();
+  useEffect(() => {
+    (async () => {
+      const isLoggedIn = await magic.user.isLoggedIn();
+      if (isLoggedIn) {
+        try {
+          const { email } = await magic.user.getMetadata();
+          if (email) {
+            const didToken = await magic.user.getIdToken();
 
-          const res = await fetch("/api/userDetails");
-          const data = await res.json();
+            const res = await fetch("/api/userDetails");
+            const data = await res.json();
 
-          setProfilePic(data?.userDetails?.data?.users[0].profilePic);
-          setDisplayName(data?.userDetails?.data?.users[0].displayName);
-          setIsLoadingProfilePic(false);
+            if (isMounted.current) {
+              setProfilePic(data?.userDetails?.data?.users[0].profilePic);
+              setDisplayName(data?.userDetails?.data?.users[0].displayName);
+              setIsLoadingProfilePic(false);
 
-          setUsername(email);
-          setLoggedIn(true);
-          setDidToken(didToken);
+              setUsername(email);
+              setLoggedIn(true);
+              setDidToken(didToken);
+            }
+          }
+        } catch (error) {
+          console.error("Can't retrieve email in NavBar", error);
         }
-      } catch (error) {
-        console.error("Can't retrieve email in NavBar", error);
+      } else {
       }
-    } else {
-    }
 
-    setIsLoading(false);
+      setIsLoading(false);
+    })();
+
+    return () => {
+      isMounted.current = false;
+    };
   }, [profilePic]);
 
   const router = useRouter();

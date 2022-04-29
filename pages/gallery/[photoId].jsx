@@ -48,42 +48,48 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
   const [sendingComment, setSendingComment] = useState(false);
   const commentInput = useRef(null);
 
-  useEffect(async () => {
-    const user = await fetch("/api/userDetails");
-    const userDetails = await user.json();
-    setDisplayName(userDetails?.userDetails?.data?.users[0].displayName);
-    setProfilePic(userDetails?.userDetails?.data?.users[0].profilePic);
+  useEffect(() => {
+    (async () => {
+      const user = await fetch("/api/userDetails");
+      const userDetails = await user.json();
+      setDisplayName(userDetails?.userDetails?.data?.users[0].displayName);
+      setProfilePic(userDetails?.userDetails?.data?.users[0].profilePic);
+    })();
   }, []);
 
-  useEffect(async () => {
-    if (displayName !== "") {
-      const getLike = await fetch("/api/getLikes", {
+  useEffect(() => {
+    (async () => {
+      if (displayName !== "") {
+        const getLike = await fetch("/api/getLikes", {
+          method: "GET",
+          headers: {
+            body: JSON.stringify({
+              displayName: displayName,
+              photoId: asset_id,
+            }),
+          },
+        });
+        const likes = await getLike.json();
+        setLike(likes?.photoLikes?.data?.likes[0]?.like);
+      }
+    })();
+  }, [displayName, asset_id]);
+
+  useEffect(() => {
+    (async () => {
+      const getComments = await fetch("/api/getComments", {
         method: "GET",
         headers: {
+          "Content-type": "application/json",
           body: JSON.stringify({
-            displayName: displayName,
             photoId: asset_id,
           }),
         },
       });
-      const likes = await getLike.json();
-      setLike(likes?.photoLikes?.data?.likes[0]?.like);
-    }
-  }, [displayName]);
-
-  useEffect(async () => {
-    const getComments = await fetch("/api/getComments", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        body: JSON.stringify({
-          photoId: asset_id,
-        }),
-      },
-    });
-    const comments = await getComments.json();
-    setPhotoComments(comments.photoComments.data.comments);
-  }, [newComment]);
+      const comments = await getComments.json();
+      setPhotoComments(comments.photoComments.data.comments);
+    })();
+  }, [newComment, asset_id]);
 
   const sendComment = async () => {
     if (!sendingComment) {
