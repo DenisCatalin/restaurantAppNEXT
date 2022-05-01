@@ -10,6 +10,7 @@ import moment from "moment";
 import { useState, useEffect, useRef } from "react";
 import Comment from "../../components/comments/comments";
 import Loading from "../../components/loading-button/loading-button";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 
 export async function getServerSideProps(context) {
   const { userId } = await UseRedirectUser(context);
@@ -46,7 +47,16 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
   const [comment, setComment] = useState("");
   const [newComment, setNewComment] = useState();
   const [sendingComment, setSendingComment] = useState(false);
+  const [toggleComments, setToggleComments] = useState(false);
   const commentInput = useRef(null);
+
+  const { height, width } = useWindowDimensions();
+
+  console.log(width);
+
+  useEffect(() => {
+    if (width >= 1024) setToggleComments(false);
+  }, [width]);
 
   useEffect(() => {
     (async () => {
@@ -142,8 +152,17 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
         <div className={styles.content}>
           <Header />
           <motion.div
-            className={styles.imageSection}
-            animate={{ scale: [0, 1] }}
+            className={
+              toggleComments
+                ? styles.displayNone
+                : width >= 1024 && height >= 768
+                ? height >= 768
+                  ? styles.imageSection
+                  : styles.displayNone
+                : styles.imageSection
+            }
+            // animate={{ scale: toggleComments ? 0 : 1 }}
+            // transition={{ duration: 0.5 }}
           >
             <Image
               src={secure_url}
@@ -152,7 +171,25 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
               layout="fill"
             />
           </motion.div>
-          <div className={styles.commentsSection}>
+          <button
+            className={styles.responsiveButton}
+            onClick={() => setToggleComments(!toggleComments)}
+          >
+            To comments section
+          </button>
+          <div
+            className={
+              toggleComments
+                ? styles.commentsSection
+                : width >= 1024
+                ? height >= 768
+                  ? styles.commentsSection
+                  : styles.displayNone
+                : styles.displayNone
+            }
+            // animate={{ scale: toggleComments ? 1 : 0 }}
+            // transition={{ duration: 0.5 }}
+          >
             <div className={styles.photoDescription}>
               <div className={styles.profilePic}>
                 <Image

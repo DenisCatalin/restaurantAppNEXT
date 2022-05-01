@@ -98,19 +98,6 @@
   }
 }
 
-@media screen and (width: 1024px) and (height: 600px) {
-  .navbarContainer {
-    width: 45%;
-    height: 10%;
-  }
-  .openNav {
-    top: 87%;
-    left: 92%;
-    width: 70px;
-    height: 70px;
-  }
-}
-
 @media screen and (min-width: 764px) and (min-height: 1000px) {
   .navbarContainer {
     width: 60%;
@@ -137,6 +124,19 @@
   }
 }
 
+@media screen and (width: 1024px) and (height: 600px) {
+  .navbarContainer {
+    width: 45%;
+    height: 10%;
+  }
+  .openNav {
+    top: 85%;
+    left: 92%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
 @media screen and (max-width: 768px) and (max-height: 1124px) {
   .openNav {
     top: 88%;
@@ -151,4 +151,77 @@
     width: 98%;
     height: 9%;
   }
-}  
+  .openNav {
+    top: 77%;
+    left: 83%;
+    width: 60px;
+    height: 60px;
+  }
+  .openNavElipse {
+    width: 7px;
+    margin-left: 2px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+} 
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+  .navbarContainer {
+    width: 98%;
+    height: 8%;
+  }
+  .openNav {
+    top: 77%;
+    left: 83%;
+    width: 60px;
+    height: 60px;
+  }
+  .openNavElipse {
+    width: 7px;
+    margin-left: 2px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+} 
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+  .navbarContainer {
+    width: 70%;
+    height: 15%;
+  }
+  .openNav {
+    top: 82%;
+    left: 92%;
+    width: 60px;
+    height: 60px;
+  }
+  .openNavElipse {
+    width: 7px;
+    margin-left: 2px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+} 
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+  .navbarContainer {
+    width: 80%;
+    height: 15%;
+  }
+  .openNav {
+    top: 82%;
+    left: 90%;
+    width: 60px;
+    height: 60px;
+  }
+  .openNavElipse {
+    width: 7px;
+    margin-left: 2px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+} 

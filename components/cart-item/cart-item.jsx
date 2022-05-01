@@ -15,7 +15,12 @@ const CartItem = ({ cartItem }) => {
     <div className={styles.cartItem}>
       <div className={styles.cartItemImage}>
         <div className={styles.mealImage}>
-          <Image src={strMealThumb} alt="" layout="fill" />
+          <Image
+            src={strMealThumb}
+            alt=""
+            layout="fill"
+            className={styles.roundImage}
+          />
         </div>
       </div>
       <div className={styles.cartItemDetails}>

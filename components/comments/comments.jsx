@@ -6,13 +6,14 @@ const Comments = ({ commentId, displayName, comment, profilePic, visible }) => {
     <>
       {visible ? (
         <div className={styles.container}>
-          <Image
-            src={profilePic}
-            alt={commentId}
-            width={60}
-            height={60}
-            className={styles.profilePicture}
-          />
+          <div className={styles.profilePicContainer}>
+            <Image
+              src={profilePic}
+              alt={commentId}
+              layout="fill"
+              className={styles.profilePicture}
+            />
+          </div>
           <div className={styles.content}>
             <p className={styles.userName}>{displayName}</p>
             <h3 className={styles.comment}>{comment}</h3>

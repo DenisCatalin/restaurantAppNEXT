@@ -44,6 +44,10 @@
   .hover {
     cursor: pointer;
   }
+  
+  .roundImage {
+    border-radius: 50%;
+  }
 
   @media screen and (width: 1024px) and (height: 600px) {
     .cartItemTitle {
@@ -51,5 +55,23 @@
     }
     .cartItemImage {
       height: 10vh;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (max-height: 950px) {
+    .cartItemImage {
+      height: 10vh;
+    }
+  }
+
+  @media screen and (max-width: 950px) and (max-height: 450px) {
+    .cartItemImage {
+      height: 15vh;
+    }
+  }
+
+  @media screen and (max-width: 790px) and (max-height: 380px) {
+    .cartItemImage {
+      height: 15vh;
     }
   }

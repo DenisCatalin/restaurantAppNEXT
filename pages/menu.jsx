@@ -249,412 +249,427 @@ const Menu = ({
           }}
         ></motion.div>
         <div className={styles.categories}>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/meat_wewd5q.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("BEEF");
-                  setLastKnownLabel(9);
-                  setLastKnownCirle(0);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(0);
-                  setIsHover(1);
-                  setLabelLink("BEEF");
-                  setMoveLabel(9);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/turkey_h2kazq.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("CHICKEN");
-                  setLastKnownLabel(68);
-                  setLastKnownCirle(70);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(70);
-                  setIsHover(1);
-                  setLabelLink("CHICKEN");
-                  setMoveLabel(68);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/dessert_ijdxww.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("DESSERT");
-                  setLastKnownLabel(135);
-                  setLastKnownCirle(140);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(140);
-                  setIsHover(1);
-                  setLabelLink("DESSERT");
-                  setMoveLabel(135);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/lamb_fovfu1.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("LAMB");
-                  setLastKnownLabel(215);
-                  setLastKnownCirle(210);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(210);
-                  setIsHover(1);
-                  setLabelLink("LAMB");
-                  setMoveLabel(215);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/food_w37w8c.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("MISCELLANEOUS");
-                  setLastKnownLabel(250);
-                  setLastKnownCirle(279);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(279);
-                  setIsHover(1);
-                  setLabelLink("MISCELLANEOUS");
-                  setMoveLabel(250);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/spaguetti_pfoosa.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("PASTA");
-                  setLastKnownLabel(352);
-                  setLastKnownCirle(348);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(348);
-                  setIsHover(1);
-                  setLabelLink("PASTA");
-                  setMoveLabel(352);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/pork_hekbaz.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("PORK");
-                  setLastKnownLabel(427);
-                  setLastKnownCirle(420);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(420);
-                  setIsHover(1);
-                  setLabelLink("PORK");
-                  setMoveLabel(427);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/seafood_swsqmh.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("SEAFOOD");
-                  setLastKnownLabel(480);
-                  setLastKnownCirle(488);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(488);
-                  setIsHover(1);
-                  setLabelLink("SEAFOOD");
-                  setMoveLabel(480);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/rice_kzymhi.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("SIDE");
-                  setLastKnownLabel(570);
-                  setLastKnownCirle(558);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(558);
-                  setIsHover(1);
-                  setLabelLink("SIDE");
-                  setMoveLabel(570);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/starters_m89pwp.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("STARTER");
-                  setLastKnownLabel(624);
-                  setLastKnownCirle(626);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(626);
-                  setIsHover(1);
-                  setLabelLink("STARTER");
-                  setMoveLabel(624);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/salad_x0seve.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("VEGAN");
-                  setLastKnownLabel(697);
-                  setLastKnownCirle(696);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(696);
-                  setIsHover(1);
-                  setLabelLink("VEGAN");
-                  setMoveLabel(697);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/eco-food_besoc2.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("VEGETARIAN");
-                  setLastKnownLabel(750);
-                  setLastKnownCirle(765);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(765);
-                  setIsHover(1);
-                  setLabelLink("VEGETARIAN");
-                  setMoveLabel(750);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/breakfast_bxgkwj.png"
-                }
-                alt=""
-                width={40}
-                height={40}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("BREAKFAST");
-                  setLastKnownLabel(825);
-                  setLastKnownCirle(835);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(835);
-                  setIsHover(1);
-                  setLabelLink("BREAKFAST");
-                  setMoveLabel(825);
-                }}
-              />
-            </a>
-          </Link>
-          <Link href={`#${labelLink}`}>
-            <a>
-              <Image
-                src={
-                  "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/goat_yuzxsa.png"
-                }
-                alt=""
-                width={40}
-                height={38}
-                onClick={() => {
-                  console.log("clicked");
-                  setCategoryClicked(true);
-                  setLastKnownLabelName("GOAT");
-                  setLastKnownLabel(915);
-                  setLastKnownCirle(904);
-                  setTimeout(() => {
-                    setCategoryClicked(false);
-                    console.log("done timer");
-                  }, 5000);
-                }}
-                onMouseEnter={() => {
-                  setMoveCircle(904);
-                  setIsHover(1);
-                  setLabelLink("GOAT");
-                  setMoveLabel(915);
-                }}
-              />
-            </a>
-          </Link>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/meat_wewd5q.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("BEEF");
+                    setLastKnownLabel(9);
+                    setLastKnownCirle(0);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(0);
+                    setIsHover(1);
+                    setLabelLink("BEEF");
+                    setMoveLabel(9);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/turkey_h2kazq.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("CHICKEN");
+                    setLastKnownLabel(68);
+                    setLastKnownCirle(70);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(70);
+                    setIsHover(1);
+                    setLabelLink("CHICKEN");
+                    setMoveLabel(68);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/dessert_ijdxww.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("DESSERT");
+                    setLastKnownLabel(135);
+                    setLastKnownCirle(140);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(140);
+                    setIsHover(1);
+                    setLabelLink("DESSERT");
+                    setMoveLabel(135);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/lamb_fovfu1.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("LAMB");
+                    setLastKnownLabel(215);
+                    setLastKnownCirle(210);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(210);
+                    setIsHover(1);
+                    setLabelLink("LAMB");
+                    setMoveLabel(215);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/food_w37w8c.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("MISCELLANEOUS");
+                    setLastKnownLabel(250);
+                    setLastKnownCirle(279);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(279);
+                    setIsHover(1);
+                    setLabelLink("MISCELLANEOUS");
+                    setMoveLabel(250);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/spaguetti_pfoosa.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("PASTA");
+                    setLastKnownLabel(352);
+                    setLastKnownCirle(348);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(348);
+                    setIsHover(1);
+                    setLabelLink("PASTA");
+                    setMoveLabel(352);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/pork_hekbaz.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("PORK");
+                    setLastKnownLabel(427);
+                    setLastKnownCirle(420);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(420);
+                    setIsHover(1);
+                    setLabelLink("PORK");
+                    setMoveLabel(427);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/seafood_swsqmh.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("SEAFOOD");
+                    setLastKnownLabel(480);
+                    setLastKnownCirle(488);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(488);
+                    setIsHover(1);
+                    setLabelLink("SEAFOOD");
+                    setMoveLabel(480);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/rice_kzymhi.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("SIDE");
+                    setLastKnownLabel(570);
+                    setLastKnownCirle(558);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(558);
+                    setIsHover(1);
+                    setLabelLink("SIDE");
+                    setMoveLabel(570);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/starters_m89pwp.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("STARTER");
+                    setLastKnownLabel(624);
+                    setLastKnownCirle(626);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(626);
+                    setIsHover(1);
+                    setLabelLink("STARTER");
+                    setMoveLabel(624);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854685/restaurant-app-images/salad_x0seve.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("VEGAN");
+                    setLastKnownLabel(697);
+                    setLastKnownCirle(696);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(696);
+                    setIsHover(1);
+                    setLabelLink("VEGAN");
+                    setMoveLabel(697);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/eco-food_besoc2.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("VEGETARIAN");
+                    setLastKnownLabel(750);
+                    setLastKnownCirle(765);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(765);
+                    setIsHover(1);
+                    setLabelLink("VEGETARIAN");
+                    setMoveLabel(750);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/breakfast_bxgkwj.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("BREAKFAST");
+                    setLastKnownLabel(825);
+                    setLastKnownCirle(835);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(835);
+                    setIsHover(1);
+                    setLabelLink("BREAKFAST");
+                    setMoveLabel(825);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.hey}>
+            <Link href={`#${labelLink}`}>
+              <a>
+                <Image
+                  src={
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/goat_yuzxsa.png"
+                  }
+                  alt=""
+                  layout="fill"
+                  onClick={() => {
+                    console.log("clicked");
+                    setCategoryClicked(true);
+                    setLastKnownLabelName("GOAT");
+                    setLastKnownLabel(915);
+                    setLastKnownCirle(904);
+                    setTimeout(() => {
+                      setCategoryClicked(false);
+                      console.log("done timer");
+                    }, 5000);
+                  }}
+                  onMouseEnter={() => {
+                    setMoveCircle(904);
+                    setIsHover(1);
+                    setLabelLink("GOAT");
+                    setMoveLabel(915);
+                  }}
+                />
+              </a>
+            </Link>
+          </div>
         </div>
         <motion.p
           animate={{ x: moveLabel, scale: isHover }}

@@ -137,3 +137,165 @@ align-items: center;
     font-size: 1em;
     overflow: hidden;
 }
+
+.displayNone {
+    display: initial;
+  }
+
+  .displayFlex {
+    display: flex;
+  }
+
+.responsiveButton {
+    width: 50%;
+    position: absolute;
+    top: 93%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    height: 4%;
+    font-size: 1.5em;
+    background: var(--mainColor);
+    border: none;
+    outline: none;
+    display: none;
+}
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+.userPosted {
+    font-size: 1.1em;
+}
+.buttonLabel {
+    font-size: .7em;
+}
+.imageSection {
+    width: 65%;
+}
+.commentsSection {
+    width:32%;
+}
+.displayNone {
+    display: initial;
+}
+}
+  
+@media screen and (width: 1024px) and (height: 600px) {
+    .imageSection {
+        width: 65%;
+    }
+    .commentsSection {
+        width:32%;
+    }
+    .displayNone {
+        display: initial;
+    }
+}
+
+@media screen and (min-width: 764px) and (min-height: 1024px) {
+    .userPosted {
+        font-size: 1.5em;
+    }
+    .buttonLabel {
+        font-size: 1em;
+    }
+    .responsiveButton {
+        display: initial;
+    }
+    .displayNone {
+        display: none;
+    }
+    .imageSection {
+        width: 100%;
+    }
+    .commentsSection {
+        width: 100%;
+    }
+    .profilePic {
+        width: 100px;
+        height: 100px;
+    }
+}  
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+    .imageSection {
+        width: 65%;
+    }
+    .commentsSection {
+        width:32%;
+    }
+    .displayNone {
+        display: initial;
+    }
+}
+
+@media screen and (max-width: 850px) and (max-height: 1250px) {
+    .responsiveButton {
+        display: initial;
+        width: 90%;
+        height: 6%;
+    }
+    .displayNone {
+        display: none;
+    }
+    .imageSection {
+        width: 100%;
+    }
+    .commentsSection {
+        width: 100%;
+    }
+    .profilePic {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+
+}
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+
+}  
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+    .responsiveButton {
+        display: initial;
+        width: 40%;
+        height: 7%;
+        top: 92%;
+        font-size: 1.2em;
+    }
+    .displayNone {
+        display: none;
+    }
+    .imageSection {
+        width: 100%;
+    }
+    .commentsSection {
+        width: 100%;
+    }
+    .profilePic {
+        width: 60px;
+        height: 60px;
+    }
+    .commentsSpace {
+        height: 60%;
+    }
+    .commentInput {
+        height: 20%;
+    }
+}
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+    .responsiveButton {
+        display: initial;
+        width: 50%;
+        height: 7%;
+        top: 92%;
+        font-size: 1.2em;
+    }
+}  

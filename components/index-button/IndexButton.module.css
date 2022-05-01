@@ -46,6 +46,14 @@
     }
   }
 
+  @media screen and (max-width: 450px) and (max-height: 950px) {
+    .bannerButton {
+      font-size: 1.2em;
+      width: 40%;
+      height: 60%;
+    }
+  }  
+
   @media screen and (max-width: 380px) and (max-height: 790px) {
     .bannerButton {
       font-size: 1.4em;
@@ -53,3 +61,20 @@
       height: 80%;
     }
   }
+
+  @media screen and (max-width: 950px) and (max-height: 450px) {
+    .bannerButton {
+      font-size: 1.2em;
+      width: 25%;
+      height: 100%;
+    }
+  }  
+
+  @media screen and (max-width: 790px) and (max-height: 380px) {
+    .bannerButton {
+      font-size: 1.2em;
+      width: 30%;
+      height: 100%;
+    }
+  }  
+  

@@ -346,8 +346,8 @@
     font-size: .9em;
   }
   .cartContainer {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
   .dropdownCart {
     width: 30%;
@@ -367,6 +367,39 @@
   }
   .manageProfile {
     width: 50%;
+  }
+  .signOut {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 850px) and (max-height: 1250px) {
+  .countCartItems {
+    font-size: 1.1em;
+  }
+  .cartContainer {
+    width: 60px;
+    height: 60px;
+  }
+  .dropdownCart {
+    width: 45%;
+    height: 50vh;
+    left: 54%;
+  }
+  .dropdown {
+    width: 40%;
+    left: 59%;
+    min-height: 40vh;
+  }
+  .dropdown h2 {
+    font-size: 1.4em;
+  }
+  .dropdown h3 {
+    font-size: 1.1em;
+  }
+  .manageProfile {
+    width: 50%;
+    font-size: 1em;
   }
   .signOut {
     width: 40%;
@@ -433,6 +466,88 @@
   .dropdown {
     width: 100%;
     left: 0%;
+    min-height: 60vh;
+  }
+  .dropdown h2 {
+    font-size: 1.3em;
+  }
+  .dropdown h3 {
+    font-size: 1em;
+  }
+  .manageProfile {
+    width: 50%;
+    font-size: .9em;
+  }
+  .signOut {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+  .logoHeader {
+    position: relative;
+    width: 180px;
+    height: 80px;
+  }
+  .headerProfilePic {
+    width: 60px;
+    height: 60px;
+  }
+  .headerTools {
+    width: 30%;
+  }
+  .cartContainer {
+    height: 45px;
+  }
+  .dropdownCart {
+    width: 100%;
+    height: 90vh;
+    left: 0%;
+  }
+  .dropdown {
+    width: 80%;
+    height: 50vh;
+    left: 18%;
+  }
+  .dropdown h2 {
+    font-size: 1.2em;
+  }
+  .dropdown h3 {
+    font-size: .9em;
+  }
+  .manageProfile {
+    width: 50%;
+  }
+  .signOut {
+    width: 40%;
+  }
+}  
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+  .logoHeader {
+    position: relative;
+    width: 180px;
+    height: 80px;
+  }
+  .headerProfilePic {
+    width: 55px;
+    height: 55px;
+    transform: translateY(20%);
+  }
+  .headerTools {
+    width: 15%;
+  }
+  .cartContainer {
+    height: 40px;
+  }
+  .dropdownCart {
+    width: 35%;
+    height: 90vh;
+    left: 63%;
+  }
+  .dropdown {
+    width: 30%;
+    left: 69%;
     min-height: 90vh;
   }
   .dropdown h2 {
@@ -447,4 +562,48 @@
   .signOut {
     width: 40%;
   }
+  .countCartItems {
+    font-size: .9em;
+  }
 }
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+  .logoHeader {
+    position: relative;
+    width: 180px;
+    height: 80px;
+  }
+  .headerProfilePic {
+    width: 55px;
+    height: 55px;
+    transform: translateY(20%);
+  }
+  .headerTools {
+    width: 20%;
+  }
+  .cartContainer {
+    height: 40px;
+  }
+  .dropdownCart {
+    width: 45%;
+    height: 90vh;
+    left: 49%;
+  }
+  .dropdown {
+    width: 45%;
+    left: 54%;
+    min-height: 90vh;
+  }
+  .dropdown h2 {
+    font-size: 1.2em;
+  }
+  .dropdown h3 {
+    font-size: .9em;
+  }
+  .manageProfile {
+    width: 50%;
+  }
+  .signOut {
+    width: 40%;
+  }
+}  

@@ -7,6 +7,7 @@ import Modal from "react-modal";
 import Ingredient from "../ingredient/ingredient";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cart.slice";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 
 Modal.setAppElement("#__next");
 
@@ -76,6 +77,7 @@ function Content({ id, img, dataMeal }) {
 }
 
 const MenuItem = ({ items }) => {
+  const { width, height } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -155,7 +157,7 @@ const MenuItem = ({ items }) => {
                 width={30}
                 height={30}
               />
-              <p>Add to cart</p>
+              {width > 680 ? <p>Add to cart</p> : null}
             </motion.button>
             <motion.button
               className={styles.modalAddToFav}
@@ -168,7 +170,7 @@ const MenuItem = ({ items }) => {
                 width={30}
                 height={30}
               />
-              <p>Add to favourite</p>
+              {width > 680 ? <p>Add to favourite</p> : null}
             </motion.button>
           </div>
         </div>
