@@ -36,6 +36,7 @@ const NavBar = ({ showNav = true, showOpen = false }) => {
         </div>
         <motion.div
           className={styles.navbarCircle}
+          initial={{ scale: 0 }}
           animate={{
             x: moveCircle,
             scale: isHover,

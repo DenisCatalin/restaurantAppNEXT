@@ -265,6 +265,7 @@ const Header = () => {
       </Modal>
       <motion.div
         className={styles.dropdown}
+        initial={{ scale: 0 }}
         animate={{ scale: showDropdown ? 1 : 0 }}
       >
         <div className={styles.dropdownImage}>
@@ -295,6 +296,7 @@ const Header = () => {
       </motion.div>
       <motion.div
         className={styles.dropdownCart}
+        initial={{ scale: 0 }}
         animate={{ scale: toggleCart ? 1 : 0 }}
       >
         <HeaderCart cart={cart} />
