@@ -14,22 +14,22 @@ import useWindowDimensions from "../../utils/useWindowDimensions";
 import {
   useFetchUserDetails,
   useGetComments,
-  useGetLikes,
   useModifyLike,
   usePostComment,
 } from "../../utils/useFetch";
+import useGetLikes from "../../utils/useGetLikes";
 
 export async function getServerSideProps(context) {
-  // const { userId } = await UseRedirectUser(context);
-  // if (!userId) {
-  //   return {
-  //     props: {},
-  //     redirect: {
-  //       destination: "/login",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  const { userId } = await UseRedirectUser(context);
+  if (!userId) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const photo = context.params.photoId;
 
   const results = await search({
