@@ -41,8 +41,6 @@ export default async function BookTables(req, res) {
           tables.toString()
         );
 
-        console.log("[addTablesToBooking] tables", tables);
-
         res.send({ message: "Complete", addBooking, addBookingForUser });
       } else {
         const defaultValue = value;
@@ -55,8 +53,6 @@ export default async function BookTables(req, res) {
           date,
           array2.toString().replaceAll(",", "|")
         );
-
-        console.log("[addTablesToBooking]", date);
 
         const addBookingForUser = await addToBookingHistory(
           token,

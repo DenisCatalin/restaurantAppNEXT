@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
+import clx from "classnames";
 
 const NavBar = ({ showNav = true, showOpen = false }) => {
   const [moveCircle, setMoveCircle] = useState(18);
@@ -146,7 +147,7 @@ const NavBar = ({ showNav = true, showOpen = false }) => {
         </div>
       </motion.div>
       <motion.div
-        className={styles.openNav}
+        className={showNavbar ? clx(styles.openNav, styles.up) : styles.openNav}
         animate={{ scale: showOpen ? 1 : 0 }}
         onClick={() => setShowNavbar(!showNavbar)}
         initial={{ borderRadius: 50 }}

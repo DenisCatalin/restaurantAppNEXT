@@ -1,6 +1,7 @@
 import StripeCheckout from "react-stripe-checkout";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useAddOrder, useFetchUserDetails } from "../../utils/useFetch";
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100.00002;
@@ -11,9 +12,7 @@ const StripeCheckoutButton = ({ price }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("/api/userDetails");
-      const data = await res.json();
-      console.log(data);
+      const data = await useFetchUserDetails();
 
       setIssuer(data?.userDetails?.data?.users[0].issuer);
       setEmail(data?.userDetails?.data?.users[0].email);
@@ -56,20 +55,14 @@ const StripeCheckoutButton = ({ price }) => {
       };
       finalCart.push(string);
     });
-    const res = await fetch("/api/addOrders", {
-      method: "POST",
-      headers: {
-        body: JSON.stringify({
-          cart: JSON.stringify(finalCart),
-          paymentId: token.id,
-          currentDate: dateString,
-          userId: issuer,
-          email: email,
-          price: finalPrice,
-        }),
-      },
-    });
-    const data = await res.json();
+    const data = await useAddOrder(
+      finalCart,
+      token.id,
+      dateString,
+      issuer,
+      email,
+      finalPrice
+    );
     console.log(data);
   };
 

@@ -41,7 +41,19 @@
     border-radius: 10px;
     transform: translateY(4%);
     position: relative;
+    overflow: hidden;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.8), 1px 1px 5px rgba(0,0,0,0.2), inset 1px 1px 20px rgba(0,0,0,0.8), -1px -1px 5px rgba(0,0,0,0.8);
+  }
+
+  .bookPlace2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: var(--navbarBackground70);
+    z-index: 8000;
   }
   
 .displayFlex {
@@ -55,6 +67,10 @@
 
 .text {
   text-align: center;
+}
+
+.noClick {
+  pointer-events: none;
 }
 
 .dateReservation {
@@ -75,7 +91,6 @@
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
   font-family: 'Merriweather Sans', sans-serif;
 }
 .selectTable:nth-child(1) {

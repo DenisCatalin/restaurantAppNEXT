@@ -7,6 +7,11 @@ import LoadingPage from "../components/loading-component/loading-component";
 import styles from "../styles/Booking.module.css";
 import { useState, useEffect } from "react";
 import cls from "classnames";
+import {
+  useAddTablesToBooking,
+  useCheckTablesForBooking,
+  useFetchUserDetails,
+} from "../utils/useFetch";
 
 const Booking = () => {
   let months = [
@@ -88,12 +93,11 @@ const Booking = () => {
   const [Bookings, setBookings] = useState([]);
   const [issuer, setIssuer] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingBooking, setLoadingBooking] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("/api/userDetails");
-      const data = await res.json();
-
+      const data = await useFetchUserDetails();
       setIssuer(data?.userDetails?.data?.users[0].issuer);
     })();
   }, []);
@@ -136,7 +140,8 @@ const Booking = () => {
         "You should select as many tables as you chose in order to complete your order.",
         0
       );
-
+    setLoadingBooking(true);
+    setIsLoading(true);
     const today = new Date();
     let luni = [
       "January",
@@ -158,19 +163,13 @@ const Booking = () => {
     }-${today.getFullYear()}`;
 
     const dateString = `${month}-${day}-${year}`;
-    const res = await fetch("/api/addTablesToBooking", {
-      method: "POST",
-      headers: {
-        body: JSON.stringify({
-          tables: Bookings,
-          issuer: issuer,
-          seats: seatsNumber,
-          date: dateString,
-          currentDate: date,
-        }),
-      },
-    });
-    const data = await res.json();
+    const data = await useAddTablesToBooking(
+      Bookings,
+      issuer,
+      seatsNumber,
+      dateString,
+      date
+    );
     console.log(data);
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
@@ -187,6 +186,14 @@ const Booking = () => {
       setYear(year);
     }, 100);
     setYear("year");
+    setLoadingBooking(false);
+    setIsLoading(false);
+    showNotification(
+      `You have booked the ${
+        Bookings.length > 1 ? "tables:" : "table:"
+      } [${Bookings}] successfully.`,
+      1
+    );
   };
 
   useEffect(() => {
@@ -217,19 +224,8 @@ const Booking = () => {
       ) {
         setIsLoading(true);
         const dateString = `${month}-${day}-${year}`;
-        const res = await fetch("/api/checkTablesForBooking", {
-          method: "GET",
-          headers: {
-            body: JSON.stringify({
-              date: dateString,
-            }),
-          },
-        });
-
-        const data = await res.json();
-        console.log("data", data);
+        const data = await useCheckTablesForBooking(dateString);
         const tables = data?.check?.data?.booking.length;
-        console.log("tables", tables);
         if (tables === 0) {
           setTable1((prevState) => ({ ...prevState, reserved: false }));
           setTable2((prevState) => ({ ...prevState, reserved: false }));
@@ -481,7 +477,13 @@ const Booking = () => {
           </div>
         </div>
         {isLoading ? (
-          <LoadingPage />
+          <div className={styles.bookingScheme}>
+            <div className={styles.bookPlace}>
+              <div className={styles.bookPlace2}>
+                <Loading />
+              </div>
+            </div>
+          </div>
         ) : (
           <div className={styles.bookingScheme}>
             <div className={styles.bookPlace}>
@@ -704,12 +706,15 @@ const Booking = () => {
                 />
               </div>
               <motion.button
-                className={styles.bookingOrder}
+                className={
+                  loadingBooking
+                    ? cls(styles.bookingOrder, styles.noClick)
+                    : styles.bookingOrder
+                }
                 onClick={sendReservation}
                 whileHover={{ rotate: [0, -10, 10, 0] }}
               >
-                {/* <Loading /> */}
-                ORDER
+                {loadingBooking ? <Loading /> : "ORDER"}
               </motion.button>
             </div>
           </div>

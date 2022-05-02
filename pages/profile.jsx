@@ -8,6 +8,13 @@ import Loading from "../components/loading-component/loading-component";
 import { motion } from "framer-motion";
 import BookingHistory from "../components/booking-history/booking-history";
 import OrderHistory from "../components/order-history/order-history";
+import {
+  useFetchUserDetails,
+  useCheckBookingHistory,
+  useCheckOrders,
+  useChangeDisplayName,
+  useChangeAddress,
+} from "../utils/useFetch";
 
 const Profile = () => {
   const [profilePic, setProfilePic] = useState();
@@ -30,8 +37,7 @@ const Profile = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("/api/userDetails");
-      const data = await res.json();
+      const data = await useFetchUserDetails();
 
       setProfilePic(data?.userDetails?.data?.users[0].profilePic);
       setDisplayName(data?.userDetails?.data?.users[0].displayName);
@@ -44,35 +50,17 @@ const Profile = () => {
   }, [displayName, address]);
 
   useEffect(() => {
-    console.log("useEffect");
     (async () => {
-      const res = await fetch("/api/checkBookingHistory", {
-        method: "GET",
-        headers: {
-          body: JSON.stringify({
-            issuer: issuer,
-          }),
-        },
-      });
-      const data = await res.json();
+      const data = await useCheckBookingHistory(issuer);
       setBookings(data?.checkBookingForUser?.reservations);
       setLoadingBookings(false);
     })();
   }, [loadingBookings, issuer]);
 
   useEffect(() => {
-    console.log("useEffect2");
     (async () => {
       if (orders === undefined || orders.length === 0) {
-        const res = await fetch("/api/checkOrders", {
-          method: "GET",
-          headers: {
-            body: JSON.stringify({
-              userId: issuer,
-            }),
-          },
-        });
-        const data = await res.json();
+        const data = await useCheckOrders(issuer);
         if (data !== undefined) {
           const item = data?.checkOrderForUser;
           setOrders(item);
@@ -98,18 +86,12 @@ const Profile = () => {
     if (displayNameInput.current.value.length > 2) {
       setEditDisplayName(!editDisplayName);
       displayNameInput.current.value = "";
-      const res = await fetch("/api/changeDisplayName", {
-        method: "POST",
-        headers: {
-          body: JSON.stringify({
-            newDisplayName: newDisplayName,
-            displayName: displayName,
-            profilePic: profilePic,
-            email: email,
-          }),
-        },
-      });
-      const data = await res.json();
+      const data = await useChangeDisplayName(
+        newDisplayName,
+        displayName,
+        profilePic,
+        email
+      );
       setDisplayName(
         data?.changes?.data?.update_users?.returning[0]?.displayName
       );
@@ -120,18 +102,12 @@ const Profile = () => {
     if (addressInput.current.value.length > 10) {
       setEditAddress(!editAddress);
       addressInput.current.value = "";
-      const res = await fetch("/api/changeAddress", {
-        method: "POST",
-        headers: {
-          body: JSON.stringify({
-            newAddress: newAddress,
-            displayName: displayName,
-            profilePic: profilePic,
-            email: email,
-          }),
-        },
-      });
-      const data = await res.json();
+      const data = await useChangeAddress(
+        newAddress,
+        displayName,
+        profilePic,
+        email
+      );
       setAddress(data?.changes?.data?.update_users?.returning[0]?.address);
     } else console.log("Too short");
   };

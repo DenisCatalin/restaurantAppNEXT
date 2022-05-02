@@ -19,9 +19,14 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px;
   background: transparent;
 }
+
+/* ::-webkit-scrollbar-thumb {
+  background: rgb(109, 109, 109);
+  border-radius: 20px;
+} */
 
 :root {
   --darkBackground: #171717;

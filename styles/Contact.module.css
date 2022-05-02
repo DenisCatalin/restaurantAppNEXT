@@ -18,6 +18,11 @@
 }
 
 .contactForm {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: wrap column;
+    color: var(--textColor);
     width: 35%;
     min-height: 85vh;
     background-color: var(--Background);
@@ -25,13 +30,6 @@
     box-shadow: 1px 1px 10px rgb(0, 0, 0), 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
-.contactForm {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-flow: wrap column;
-    color: var(--textColor);
-}
 
 .formWrapper {
     width: 60%;
@@ -84,3 +82,195 @@
     outline: none;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+    .contactForm {
+        width: 50%;
+    }
+    .title {
+        font-size: 1.5em;
+    }
+    .formLabel {
+        font-size: 1em;
+        letter-spacing: 1px;
+    }
+}
+
+@media screen and (width: 1024px) and (height: 600px) {
+    .contactForm {
+        width: 50%;
+    }
+    .title {
+        font-size: 1.2em;
+    }
+    .formLabel {
+        font-size: .8em;
+        letter-spacing: 1px;
+    }
+    .formInput {
+        height: 40px;
+    }
+    .formInputText {
+        height: 140px;
+    }
+    .formButton {
+        height: 40px;
+    }
+}
+
+@media screen and (min-width: 764px) and (min-height: 1000px) {
+
+}  
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+
+}
+
+@media screen and (max-width: 850px) and (max-height: 1250px) {
+    .contactForm {
+        width: 50%;
+        min-height: 20vh;
+    }
+    .title {
+        font-size: 1.2em;
+    }
+    .formLabel {
+        font-size: .8em;
+        letter-spacing: 1px;
+    }
+    .formInput {
+        height: 50px;
+    }
+    .formInputText {
+        height: 200px;
+    }
+    .formButton {
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+    
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+    .contactForm {
+        width: 95%;
+        height: 80vh;
+    }
+    .title {
+        font-size: 1em;
+    }
+    .formLabel {
+        font-size: .7em;
+        letter-spacing: 1px;
+    }
+    .formButton {
+        height: 40px;
+        font-size: 1em;
+    }
+    .formWrapper {
+        height: 15%;
+    }
+    .formWrapperText {
+        height: 45%;
+    }
+}
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+    .contactForm {
+        width: 95%;
+        height: 80vh;
+    }
+    .title {
+        font-size: 1em;
+    }
+    .formLabel {
+        font-size: .7em;
+        letter-spacing: 1px;
+    }
+    .formInput {
+        height: 50px;
+    }
+    .formInputText {
+        height: 200px;
+    }
+    .formButton {
+        height: 40px;
+        font-size: 1em;
+    }
+}  
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+    .imageBG, .container {
+        min-height: 180vh;
+    }
+    .contactForm {
+        width: 95%;
+        height: 155vh;
+        justify-content: space-evenly;
+    }
+    .title {
+        font-size: 1.5em;
+        height: 1px;
+    }
+    .formLabel {
+        font-size: .7em;
+        letter-spacing: 1px;
+    }
+    .formInput {
+        height: 50px;
+    }
+    .formInputText {
+        height: 200px;
+    }
+    .formButton {
+        height: 40px;
+        font-size: 1em;
+    }
+    .formWrapper {
+        height: 10%;
+    }
+    .formWrapperText {
+        height: 45%;
+    }
+}
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+    .imageBG, .container {
+        min-height: 190vh;
+    }
+    .contactForm {
+        width: 95%;
+        height: 155vh;
+        justify-content: space-evenly;
+    }
+    .title {
+        font-size: 1em;
+        /* height: 1px; */
+    }
+    .formLabel {
+        font-size: .7em;
+        letter-spacing: 1px;
+    }
+    .formInput {
+        height: 50px;
+    }
+    .formInputText {
+        height: 200px;
+    }
+    .formButton {
+        height: 40px;
+        position: relative;
+        font-size: 1em;
+    }
+    .formWrapper {
+        height: 50px;
+    }
+    .formWrapper {
+        height: 20%;
+    }
+    .formWrapperText {
+        height: 45%;
+    }
+}  

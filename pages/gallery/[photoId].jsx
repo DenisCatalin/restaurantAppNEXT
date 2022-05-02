@@ -11,18 +11,25 @@ import { useState, useEffect, useRef } from "react";
 import Comment from "../../components/comments/comments";
 import Loading from "../../components/loading-button/loading-button";
 import useWindowDimensions from "../../utils/useWindowDimensions";
+import {
+  useFetchUserDetails,
+  useGetComments,
+  useGetLikes,
+  useModifyLike,
+  usePostComment,
+} from "../../utils/useFetch";
 
 export async function getServerSideProps(context) {
-  const { userId } = await UseRedirectUser(context);
-  if (!userId) {
-    return {
-      props: {},
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
+  // const { userId } = await UseRedirectUser(context);
+  // if (!userId) {
+  //   return {
+  //     props: {},
+  //     redirect: {
+  //       destination: "/login",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   const photo = context.params.photoId;
 
   const results = await search({
@@ -60,8 +67,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   useEffect(() => {
     (async () => {
-      const user = await fetch("/api/userDetails");
-      const userDetails = await user.json();
+      const userDetails = await useFetchUserDetails();
       setDisplayName(userDetails?.userDetails?.data?.users[0].displayName);
       setProfilePic(userDetails?.userDetails?.data?.users[0].profilePic);
     })();
@@ -70,16 +76,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
   useEffect(() => {
     (async () => {
       if (displayName !== "") {
-        const getLike = await fetch("/api/getLikes", {
-          method: "GET",
-          headers: {
-            body: JSON.stringify({
-              displayName: displayName,
-              photoId: asset_id,
-            }),
-          },
-        });
-        const likes = await getLike.json();
+        const likes = await useGetLikes(displayName, asset_id);
         setLike(likes?.photoLikes?.data?.likes[0]?.like);
       }
     })();
@@ -87,16 +84,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   useEffect(() => {
     (async () => {
-      const getComments = await fetch("/api/getComments", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          body: JSON.stringify({
-            photoId: asset_id,
-          }),
-        },
-      });
-      const comments = await getComments.json();
+      const comments = await useGetComments(asset_id);
       setPhotoComments(comments.photoComments.data.comments);
     })();
   }, [newComment, asset_id]);
@@ -105,19 +93,12 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
     if (!sendingComment) {
       setSendingComment(true);
       setComment("");
-      const postComment = await fetch("/api/postComment", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          body: JSON.stringify({
-            photoId: asset_id,
-            displayName,
-            profilePic,
-            comment,
-          }),
-        },
-      });
-      const data = await postComment.json();
+      const data = await usePostComment(
+        asset_id,
+        displayName,
+        profilePic,
+        comment
+      );
       setNewComment(data);
       setSendingComment(false);
     } else console.log("Anti-spam");
@@ -125,24 +106,12 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   const likeButton = async () => {
     setLike(!like);
-    console.log(like);
-    const modify = await fetch("/api/modifyLike", {
-      method: "POST",
-      headers: {
-        body: JSON.stringify({
-          displayName: displayName,
-          photoId: asset_id,
-          like: like ? false : true,
-        }),
-      },
-    });
-    const res = await modify.json();
+    const res = await useModifyLike(displayName, asset_id, like);
     console.log(res);
   };
 
-  const focusCommentInput = () => {
-    commentInput.current.focus();
-  };
+  const focusCommentInput = () => commentInput.current.focus();
+
   return (
     <div className={styles.imageBG}>
       <div className={styles.container}>
@@ -161,8 +130,6 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
                   : styles.displayNone
                 : styles.imageSection
             }
-            // animate={{ scale: toggleComments ? 0 : 1 }}
-            // transition={{ duration: 0.5 }}
           >
             <Image
               src={secure_url}
@@ -187,8 +154,6 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
                   : styles.displayNone
                 : styles.displayNone
             }
-            // animate={{ scale: toggleComments ? 1 : 0 }}
-            // transition={{ duration: 0.5 }}
           >
             <div className={styles.photoDescription}>
               <div className={styles.profilePic}>

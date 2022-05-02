@@ -87,7 +87,6 @@ const ScheduleCard = ({ day, dayName }) => {
         currentDay === day + 1 ? styles.calendarCardNow : styles.calendarCard
       }
       variants={item}
-      animate={{ scale: [0, 1], rotate: [90, 0] }}
     >
       <motion.h1 className={styles.calendarDay} layout>
         {day + 1}

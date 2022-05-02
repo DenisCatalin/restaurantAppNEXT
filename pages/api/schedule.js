@@ -6,7 +6,6 @@ export default async function getSchedule(req, res) {
       const token = req ? req.cookies?.token : null;
       const day = req ? req.cookies?.scheduleDay : null;
       const getScheduleQuery = await getScheduleQueryHasura(token, day);
-      console.log(+day);
 
       res.send({ done: true, getScheduleQuery });
     } catch (error) {

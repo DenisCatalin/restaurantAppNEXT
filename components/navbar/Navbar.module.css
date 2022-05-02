@@ -146,36 +146,18 @@
   }
 }
 
-@media screen and (max-width: 380px) and (max-height: 790px) {
-  .navbarContainer {
-    width: 98%;
-    height: 9%;
-  }
-  .openNav {
-    top: 77%;
-    left: 83%;
-    width: 60px;
-    height: 60px;
-  }
-  .openNavElipse {
-    width: 7px;
-    margin-left: 2px;
-    height: 7px;
-    background: white;
-    border-radius: 50%;
-  }
-} 
-
 @media screen and (max-width: 450px) and (max-height: 950px) {
   .navbarContainer {
     width: 98%;
     height: 8%;
+    bottom: 1%;
   }
   .openNav {
-    top: 77%;
+    top: 90%;
     left: 83%;
     width: 60px;
     height: 60px;
+    transition: top 0.5s ease-in-out;
   }
   .openNavElipse {
     width: 7px;
@@ -183,6 +165,34 @@
     height: 7px;
     background: white;
     border-radius: 50%;
+  }
+  .up {
+    top: 84%;
+  }
+} 
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+  .navbarContainer {
+    width: 98%;
+    height: 9%;
+    bottom: 0.5%;
+  }
+  .openNav {
+    top: 90%;
+    left: 83%;
+    width: 60px;
+    height: 60px;
+    transition: top 0.5s ease-in-out;
+  }
+  .openNavElipse {
+    width: 7px;
+    margin-left: 2px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+  }
+  .up {
+    top: 80%;
   }
 } 
 

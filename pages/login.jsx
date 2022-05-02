@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { magic } from "../lib/magic-client";
 import Header from "../components/header/header";
 import { motion } from "framer-motion";
+import { useLogin } from "../utils/useFetch";
 
 const Login = () => {
   const [userMsg, setUserMsg] = useState("");
@@ -36,15 +37,7 @@ const Login = () => {
             email,
           });
           if (didToken) {
-            const response = await fetch("/api/login", {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${didToken}`,
-                "Content-type": "application/json",
-              },
-            });
-
-            const loggedInResponse = await response.json();
+            const loggedInResponse = await useLogin(didToken);
             if (loggedInResponse.done) {
               router.push("/");
             } else {

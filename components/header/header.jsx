@@ -7,6 +7,11 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import HeaderCart from "../header-cart/header-cart";
+import {
+  useFetchUserDetails,
+  useLogout,
+  useUploadPhoto,
+} from "../../utils/useFetch";
 Modal.setAppElement("#__next");
 
 const Header = () => {
@@ -39,8 +44,7 @@ const Header = () => {
           if (email) {
             const didToken = await magic.user.getIdToken();
 
-            const res = await fetch("/api/userDetails");
-            const data = await res.json();
+            const data = await useFetchUserDetails();
 
             if (isMounted.current) {
               setProfilePic(data?.userDetails?.data?.users[0].profilePic);
@@ -85,17 +89,10 @@ const Header = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/logout", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${didToken}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await useLogout(didToken);
+      console.log(res);
 
       setShowDropdown(!showDropdown);
-
-      const res = await response.json();
     } catch (error) {
       console.error("Error logging out", error);
       router.push("/login");
@@ -139,18 +136,12 @@ const Header = () => {
     setProfilePic(data.secure_url);
     handleToggleModal();
 
-    const res = await fetch("/api/uploadPhoto", {
-      method: "POST",
-      headers: {
-        body: JSON.stringify({
-          displayName: displayName,
-          newProfilePic: data.secure_url,
-          profilePic: profilePic,
-          email: username,
-        }),
-      },
-    });
-    const response = await res.json();
+    const response = await useUploadPhoto(
+      displayName,
+      data.secure_url,
+      profilePic,
+      username
+    );
     console.log(response);
   };
 
