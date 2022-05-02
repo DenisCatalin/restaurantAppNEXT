@@ -157,7 +157,7 @@
     left: 83%;
     width: 60px;
     height: 60px;
-    transition: top 0.5s ease-in-out;
+    transition: top 0.3s ease-in-out;
   }
   .openNavElipse {
     width: 7px;
@@ -167,7 +167,7 @@
     border-radius: 50%;
   }
   .up {
-    top: 84%;
+    top: 82%;
   }
 } 
 
@@ -182,7 +182,7 @@
     left: 83%;
     width: 60px;
     height: 60px;
-    transition: top 0.5s ease-in-out;
+    transition: top 0.3s ease-in-out;
   }
   .openNavElipse {
     width: 7px;
