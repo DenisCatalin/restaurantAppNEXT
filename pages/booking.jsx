@@ -3,7 +3,6 @@ import Head from "next/head";
 import Header from "../components/header/header";
 import Navbar from "../components/navbar/navbar";
 import Loading from "../components/loading-button/loading-button";
-import LoadingPage from "../components/loading-component/loading-component";
 import styles from "../styles/Booking.module.css";
 import { useState, useEffect } from "react";
 import cls from "classnames";

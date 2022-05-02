@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { magic } from "../lib/magic-client";
 import Header from "../components/header/header";
 import { motion } from "framer-motion";
-import { useLogin } from "../utils/useFetch";
 
 const Login = () => {
   const [userMsg, setUserMsg] = useState("");
