@@ -11,13 +11,6 @@ import { useState, useEffect, useRef } from "react";
 import Comment from "../../components/comments/comments";
 import Loading from "../../components/loading-button/loading-button";
 import useWindowDimensions from "../../utils/useWindowDimensions";
-import {
-  useFetchUserDetails,
-  useGetComments,
-  useModifyLike,
-  usePostComment,
-} from "../../utils/useFetch";
-import useGetLikes from "../../utils/useGetLikes";
 
 export async function getServerSideProps(context) {
   const { userId } = await UseRedirectUser(context);
@@ -67,16 +60,26 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   useEffect(() => {
     (async () => {
-      const userDetails = await useFetchUserDetails();
-      setDisplayName(userDetails?.userDetails?.data?.users[0].displayName);
-      setProfilePic(userDetails?.userDetails?.data?.users[0].profilePic);
+      const res = await fetch("/api/userDetails");
+      const data = await res.json();
+      setDisplayName(data?.userDetails?.data?.users[0].displayName);
+      setProfilePic(data?.userDetails?.data?.users[0].profilePic);
     })();
   }, []);
 
   useEffect(() => {
     (async () => {
       if (displayName !== "") {
-        const likes = await useGetLikes(displayName, asset_id);
+        const res = await fetch("/api/getLikes", {
+          method: "GET",
+          headers: {
+            body: JSON.stringify({
+              displayName: displayName,
+              photoId: asset_id,
+            }),
+          },
+        });
+        const likes = await res.json();
         setLike(likes?.photoLikes?.data?.likes[0]?.like);
       }
     })();
@@ -84,7 +87,16 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   useEffect(() => {
     (async () => {
-      const comments = await useGetComments(asset_id);
+      const res = await fetch("/api/getComments", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          body: JSON.stringify({
+            photoId: asset_id,
+          }),
+        },
+      });
+      const comments = await res.json();
       setPhotoComments(comments.photoComments.data.comments);
     })();
   }, [newComment, asset_id]);
@@ -93,12 +105,19 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
     if (!sendingComment) {
       setSendingComment(true);
       setComment("");
-      const data = await usePostComment(
-        asset_id,
-        displayName,
-        profilePic,
-        comment
-      );
+      const res = await fetch("/api/postComment", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          body: JSON.stringify({
+            photoId: asset_id,
+            displayName,
+            profilePic,
+            comment,
+          }),
+        },
+      });
+      const data = await res.json();
       setNewComment(data);
       setSendingComment(false);
     } else console.log("Anti-spam");
@@ -106,8 +125,18 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   const likeButton = async () => {
     setLike(!like);
-    const res = await useModifyLike(displayName, asset_id, like);
-    console.log(res);
+    const res = await fetch("/api/modifyLike", {
+      method: "POST",
+      headers: {
+        body: JSON.stringify({
+          displayName: displayName,
+          photoId: asset_id,
+          like: like ? false : true,
+        }),
+      },
+    });
+    const data = await res.json();
+    console.log(data);
   };
 
   const focusCommentInput = () => commentInput.current.focus();

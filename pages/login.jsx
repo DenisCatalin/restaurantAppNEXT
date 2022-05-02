@@ -37,7 +37,14 @@ const Login = () => {
             email,
           });
           if (didToken) {
-            const loggedInResponse = await useLogin(didToken);
+            const res = await fetch("/api/login", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${didToken}`,
+                "Content-type": "application/json",
+              },
+            });
+            const loggedInResponse = await res.json();
             if (loggedInResponse.done) {
               router.push("/");
             } else {

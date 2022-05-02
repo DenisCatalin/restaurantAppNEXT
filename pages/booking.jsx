@@ -7,11 +7,6 @@ import LoadingPage from "../components/loading-component/loading-component";
 import styles from "../styles/Booking.module.css";
 import { useState, useEffect } from "react";
 import cls from "classnames";
-import {
-  useAddTablesToBooking,
-  useCheckTablesForBooking,
-  useFetchUserDetails,
-} from "../utils/useFetch";
 
 const Booking = () => {
   let months = [
@@ -97,7 +92,8 @@ const Booking = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await useFetchUserDetails();
+      const res = await fetch("/api/userDetails");
+      const data = await res.json();
       setIssuer(data?.userDetails?.data?.users[0].issuer);
     })();
   }, []);
@@ -163,13 +159,19 @@ const Booking = () => {
     }-${today.getFullYear()}`;
 
     const dateString = `${month}-${day}-${year}`;
-    const data = await useAddTablesToBooking(
-      Bookings,
-      issuer,
-      seatsNumber,
-      dateString,
-      date
-    );
+    const res = await fetch("/api/addTablesToBooking", {
+      method: "POST",
+      headers: {
+        body: JSON.stringify({
+          tables: Bookings,
+          issuer: issuer,
+          seats: seatsNumber,
+          date: dateString,
+          currentDate: date,
+        }),
+      },
+    });
+    const data = await res.json();
     console.log(data);
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
@@ -189,7 +191,7 @@ const Booking = () => {
     setLoadingBooking(false);
     setIsLoading(false);
     showNotification(
-      `You have booked the ${
+      `You have booked ${
         Bookings.length > 1 ? "tables:" : "table:"
       } [${Bookings}] successfully.`,
       1
@@ -224,7 +226,15 @@ const Booking = () => {
       ) {
         setIsLoading(true);
         const dateString = `${month}-${day}-${year}`;
-        const data = await useCheckTablesForBooking(dateString);
+        const res = await fetch("/api/checkTablesForBooking", {
+          method: "GET",
+          headers: {
+            body: JSON.stringify({
+              date: dateString,
+            }),
+          },
+        });
+        const data = await res.json();
         const tables = data?.check?.data?.booking.length;
         if (tables === 0) {
           setTable1((prevState) => ({ ...prevState, reserved: false }));

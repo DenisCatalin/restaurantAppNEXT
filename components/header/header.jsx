@@ -7,11 +7,6 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import HeaderCart from "../header-cart/header-cart";
-import {
-  useFetchUserDetails,
-  useLogout,
-  useUploadPhoto,
-} from "../../utils/useFetch";
 Modal.setAppElement("#__next");
 
 const Header = () => {
@@ -44,7 +39,8 @@ const Header = () => {
           if (email) {
             const didToken = await magic.user.getIdToken();
 
-            const data = await useFetchUserDetails();
+            const res = await fetch("/api/userDetails");
+            const data = await res.json();
 
             if (isMounted.current) {
               setProfilePic(data?.userDetails?.data?.users[0].profilePic);
@@ -89,8 +85,15 @@ const Header = () => {
     e.preventDefault();
 
     try {
-      const res = await useLogout(didToken);
-      console.log(res);
+      const res = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${didToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
 
       setShowDropdown(!showDropdown);
     } catch (error) {
@@ -136,12 +139,18 @@ const Header = () => {
     setProfilePic(data.secure_url);
     handleToggleModal();
 
-    const response = await useUploadPhoto(
-      displayName,
-      data.secure_url,
-      profilePic,
-      username
-    );
+    const res = await fetch("/api/uploadPhoto", {
+      method: "POST",
+      headers: {
+        body: JSON.stringify({
+          displayName: displayName,
+          newProfilePic: url,
+          profilePic: profilePic,
+          email: username,
+        }),
+      },
+    });
+    const response = await res.json();
     console.log(response);
   };
 
