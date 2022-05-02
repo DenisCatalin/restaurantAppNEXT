@@ -120,6 +120,7 @@ const MenuItem = ({ items }) => {
           alt={strMeal}
           width={120}
           height={120}
+          quality={50}
           blurDataURL={strMealThumb}
           placeholder="blur"
           className={styles.itemImage}

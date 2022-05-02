@@ -7,12 +7,10 @@ import SocialMedia from "../components/social-media/social-media";
 import IndexButton from "../components/index-button/index-button";
 
 /*
-Responsive
 Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...)
 sistem de notificari
 sistem de chat
-fetch la userdetails doar daca nu e pus nimic in redux
-rezolvare fetch la scheduleday. sa scot cookies 
+responsive pagina de profil, checkout
 */
 
 export default function Home() {
