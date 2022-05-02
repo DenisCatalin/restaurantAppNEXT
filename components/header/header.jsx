@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./Header.module.css";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -7,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import HeaderCart from "../header-cart/header-cart";
+import Image from "next/image";
 Modal.setAppElement("#__next");
 
 const Header = () => {
