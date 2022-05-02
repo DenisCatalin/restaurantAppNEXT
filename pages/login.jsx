@@ -5,6 +5,20 @@ import { useState, useEffect } from "react";
 import { magic } from "../lib/magic-client";
 import Header from "../components/header/header";
 import { motion } from "framer-motion";
+import UseRedirectUser from "../utils/redirectUser";
+
+export async function getServerSideProps(context) {
+  const { userId } = await UseRedirectUser(context);
+  if (userId) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+}
 
 const Login = () => {
   const [userMsg, setUserMsg] = useState("");

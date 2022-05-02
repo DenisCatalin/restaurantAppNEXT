@@ -26,16 +26,16 @@ export async function getServerSideProps(context) {
   const breakfastItems = await getMenuItems("Breakfast");
   const goatItems = await getMenuItems("Goat");
 
-  // const { userId } = await UseRedirectUser(context);
-  // if (!userId) {
-  //   return {
-  //     props: {},
-  //     redirect: {
-  //       destination: "/login",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  const { userId } = await UseRedirectUser(context);
+  if (!userId) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
