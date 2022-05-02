@@ -123,6 +123,8 @@ const MenuItem = ({ items }) => {
           quality={50}
           blurDataURL={strMealThumb}
           placeholder="blur"
+          priority
+          loading="lazy"
           className={styles.itemImage}
         />
       </div>
