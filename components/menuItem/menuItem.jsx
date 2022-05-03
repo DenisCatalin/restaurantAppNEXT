@@ -79,6 +79,9 @@ function Content({ id, img, dataMeal }) {
 const MenuItem = ({ items }) => {
   const { width, height } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
+  let mealStorage = {};
+
+  console.log(items);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -90,7 +93,6 @@ const MenuItem = ({ items }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const price = { price: 9.99 };
-    console.log("ffmm");
     (async () => {
       const data = await getItemById(idMeal);
       const data2 = { ...data, ...price };
@@ -123,8 +125,6 @@ const MenuItem = ({ items }) => {
           quality={50}
           blurDataURL={strMealThumb}
           placeholder="blur"
-          priority
-          loading="lazy"
           className={styles.itemImage}
         />
       </div>
