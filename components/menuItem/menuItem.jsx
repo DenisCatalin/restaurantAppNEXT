@@ -81,7 +81,7 @@ const MenuItem = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   let mealStorage = {};
 
-  console.log(items);
+  // console.log(items);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);

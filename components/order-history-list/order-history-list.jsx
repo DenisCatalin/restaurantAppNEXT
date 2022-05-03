@@ -17,6 +17,7 @@ const OrderHistoryItem = ({ item, date, price, paymentId }) => {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
+    window.scrollTo(0, 0);
   };
   return (
     <div className={styles.bar} onClick={toggleOpen}>
@@ -42,10 +43,10 @@ const OrderHistoryItem = ({ item, date, price, paymentId }) => {
           </div>
           <div className={styles.listOfItems}>{fmm}</div>
           <div className={styles.modalFooter}>
-            <h4>
+            <h4 className={styles.extraText}>
               Total cost: <span className={styles.spanActive}>${price}</span>
             </h4>
-            <h4>
+            <h4 className={styles.extraText}>
               Payment ID:{" "}
               <span className={styles.spanDetails}>
                 {paymentId.replace("tok_", "")}

@@ -6,8 +6,10 @@ import {
   decrementQuantity,
   removeFromCart,
 } from "../../redux/cart.slice";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 
 const CheckoutItem = ({ item }) => {
+  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
   return (
     <div className={styles.body}>
@@ -16,8 +18,7 @@ const CheckoutItem = ({ item }) => {
           <Image
             src={item.strMealThumb}
             className={styles.imageCart}
-            width={100}
-            height={100}
+            layout="fill"
             alt=""
           />
         </div>
@@ -30,8 +31,8 @@ const CheckoutItem = ({ item }) => {
       <div className={styles.itemQuantity}>
         <Image
           src={"/static/previous.svg"}
-          height={25}
-          width={25}
+          height={width > 1024 ? 25 : 20}
+          width={width > 1024 ? 25 : 20}
           alt=""
           className={styles.imageCart}
           onClick={() => dispatch(decrementQuantity(item.idMeal))}
@@ -39,8 +40,8 @@ const CheckoutItem = ({ item }) => {
         <p>{item.quantity}</p>
         <Image
           src={"/static/next.svg"}
-          height={25}
-          width={25}
+          height={width > 1024 ? 25 : 20}
+          width={width > 1024 ? 25 : 20}
           alt=""
           className={styles.imageCart}
           onClick={() => dispatch(incrementQuantity(item.idMeal))}

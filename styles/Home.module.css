@@ -270,10 +270,10 @@
   }
 
   .socialMedia {
-    width: 100%;
+    width: 10%;
     height: 60vh;
     position: absolute;
-    right: 45%;
+    right: 90%;
     top: 40%;
     display: flex;
     justify-content: space-evenly;
