@@ -127,32 +127,6 @@
 
 }
 
-@media screen and (max-width: 380px) and (max-height: 790px) {
-  .spanActive {
-    width: 22%;
-    font-size: .8em;
-  }
-  .spanHistory2 {
-    width: 45%;
-    font-size: 0.8em;
-  }
-  .historyText {
-    font-size: 0.9em;
-  }
-  .modalContainer h1 {
-    font-size: 1em;
-  }
-  .extraText {
-    font-size: 0.7em;
-  }
-  .modalFooter {
-    flex-direction: column;
-  }
-  .item { 
-    height: 25%;
-  }
-}
-
 @media screen and (max-width: 450px) and (max-height: 950px) {
   .spanActive {
     width: 22%;
@@ -178,6 +152,32 @@
     flex-direction: column;
   }
 }  
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+  .spanActive {
+    width: 22%;
+    font-size: .8em;
+  }
+  .spanHistory2 {
+    width: 45%;
+    font-size: 0.8em;
+  }
+  .historyText {
+    font-size: 0.9em;
+  }
+  .modalContainer h1 {
+    font-size: 1em;
+  }
+  .extraText {
+    font-size: 0.7em;
+  }
+  .modalFooter {
+    flex-direction: column;
+  }
+  .item { 
+    height: 25%;
+  }
+}
 
 @media screen and (max-width: 950px) and (max-height: 450px) {
   .spanActive {
