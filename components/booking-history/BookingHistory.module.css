@@ -82,3 +82,68 @@
     padding: .3rem;
     color: var(--textColor);
 }
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+    .text {
+        font-size: 1.2em;
+    }
+    .bookingHistory {
+        width: 35%;
+    }
+}
+
+@media screen and (width: 1024px) and (height: 600px) {
+
+}
+
+@media screen and (min-width: 764px) and (min-height: 1000px) {
+
+}  
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+
+}
+
+@media screen and (max-width: 850px) and (max-height: 1250px) {
+    .text {
+        font-size: 1.2em;
+    }
+    .bookingHistory {
+        width: 45%;
+        min-height: 10vh;
+    }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+    .text {
+        font-size: 1em;
+    }
+    .bookingHistory {
+        width: 100%;
+        min-height: 10vh;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+    .text {
+        font-size: 1em;
+    }
+    .bookingHistory {
+        width: 100%;
+        min-height: 10vh;
+        margin-top: 10px;
+    }
+}  
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+
+}
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+
+}  

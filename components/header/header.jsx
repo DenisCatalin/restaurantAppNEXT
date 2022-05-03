@@ -270,7 +270,13 @@ const Header = () => {
       >
         <div className={styles.dropdownImage}>
           <Image
-            src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+            src={
+              loadingProfilePic
+                ? "/static/logo.svg"
+                : profilePic === undefined
+                ? "/static/logo.svg"
+                : profilePic
+            }
             alt={displayName}
             layout="fill"
             className={styles.profilePic}

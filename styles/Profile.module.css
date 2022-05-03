@@ -17,9 +17,9 @@ backdrop-filter: blur(10px);
 display: flex;
 justify-content: space-around;
 align-items: center;
-/* flex-direction: column; */
 overflow: auto;
 }
+
 
 .tools {
     width: 40%;
@@ -115,3 +115,120 @@ overflow: auto;
     justify-content: center;
     align-items: center;
 }
+
+.responsive {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flexDirectionColumn {
+    flex-direction: column;
+}
+
+.flexDirectionRow {
+    flex-direction: row;
+}
+
+@media screen and (max-width: 1300px) and (max-height: 850px) {
+    .Item {
+      width: 100%;
+      min-height: 25vh;
+    }
+    .tools {
+        width: 50%;
+        margin-top: 80px;
+    }
+    .itemContent h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (width: 1024px) and (height: 600px) {
+
+}
+
+@media screen and (min-width: 764px) and (min-height: 1000px) {
+
+}  
+
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+    .Item {
+        width: 100%;
+        min-height: 20vh;
+      }
+      .tools {
+          width: 60%;
+          margin-top: 100px;
+      }
+      .itemContent h1 {
+          font-size: 1.5em;
+      }
+      .input, .inputAddress {
+          width: 60%;
+      }
+      .profilePic {
+        width: 20%;
+        height: 15vh;
+    }
+}
+
+@media screen and (max-width: 850px) and (max-height: 1250px) {
+    .Item {
+        width: 100%;
+        min-height: 15vh;
+      }
+      .tools {
+          width: 98%;
+          margin-top: 100px;
+      }
+      .itemContent h1 {
+          font-size: 2em;
+      }
+      .input, .inputAddress {
+          width: 60%;
+      }
+      .profilePic {
+        width: 20%;
+        height: 13.5vh;
+    }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+
+}
+
+@media screen and (max-width: 380px) and (max-height: 790px) {
+
+    .responsive {
+        padding: 0 .5rem
+    }
+    .itemContent h1 {
+        font-size: 1.2em;
+    }
+    .profilePic {
+        width: 25%;
+        height: 13.5vh;
+    }
+}
+
+@media screen and (max-width: 450px) and (max-height: 950px) {
+    .responsive {
+        padding: 0 .5rem
+    }
+    .itemContent h1 {
+        font-size: 1.2em;
+    }
+    .profilePic {
+        width: 25%;
+        height: 13.5vh;
+    }
+}  
+
+@media screen and (max-width: 950px) and (max-height: 450px) {
+
+}
+
+@media screen and (max-width: 790px) and (max-height: 380px) {
+
+}  

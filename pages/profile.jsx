@@ -8,6 +8,8 @@ import Loading from "../components/loading-component/loading-component";
 import { motion } from "framer-motion";
 import BookingHistory from "../components/booking-history/booking-history";
 import OrderHistory from "../components/order-history/order-history";
+import useWindowDimensions from "../utils/useWindowDimensions";
+import clx from "classnames";
 
 const Profile = () => {
   const [profilePic, setProfilePic] = useState();
@@ -27,6 +29,8 @@ const Profile = () => {
   const [loadingOrders, setLoadingOrders] = useState(true);
   const displayNameInput = useRef(null);
   const addressInput = useRef(null);
+
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     (async () => {
@@ -139,9 +143,21 @@ const Profile = () => {
       <Head>
         <title>Good Food - Profile</title>
       </Head>
-      <div className={styles.container}>
+      <div
+        className={
+          width > 1380
+            ? styles.container
+            : clx(styles.container, styles.flexDirectionColumn)
+        }
+      >
         <Header />
-        {isLoading ? <Loading /> : <BookingHistory bookings={bookings} />}
+        {width > 1380 ? (
+          isLoading ? (
+            <Loading />
+          ) : (
+            <BookingHistory bookings={bookings} />
+          )
+        ) : null}
         <div className={styles.tools}>
           {isLoading ? (
             <Loading />
@@ -150,7 +166,13 @@ const Profile = () => {
               <div className={styles.profilePic}>
                 <div className={styles.displayImage}>
                   <Image
-                    src={loadingProfilePic ? "/static/logo.svg" : profilePic}
+                    src={
+                      loadingProfilePic
+                        ? "/static/logo.svg"
+                        : profilePic === undefined
+                        ? "/static/logo.svg"
+                        : profilePic
+                    }
                     alt={displayName}
                     layout="fill"
                   />
@@ -267,7 +289,25 @@ const Profile = () => {
             </div>
           )}
         </div>
-        {isLoading ? <Loading /> : <OrderHistory orders={orders} />}
+        {width > 1380 ? null : isLoading ? (
+          <Loading />
+        ) : (
+          <div
+            className={
+              width > 520
+                ? clx(styles.responsive, styles.flexDirectionRow)
+                : clx(styles.responsive, styles.flexDirectionColumn)
+            }
+          >
+            <BookingHistory bookings={bookings} />
+            <OrderHistory orders={orders} />
+          </div>
+        )}
+        {isLoading ? (
+          <Loading />
+        ) : width > 1380 ? (
+          <OrderHistory orders={orders} />
+        ) : null}
       </div>
       <NavBar showNav={false} showOpen={true} />
     </div>
