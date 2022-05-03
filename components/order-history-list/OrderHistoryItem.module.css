@@ -152,7 +152,7 @@
     flex-direction: column;
   }
   .item { 
-    height: 25%;
+    height: 35%;
   }
 }  
 
@@ -178,7 +178,7 @@
     flex-direction: column;
   }
   .item { 
-    height: 25%;
+    height: 35%;
   }
 }
 
@@ -212,6 +212,9 @@
   }
   .modalFooter {
     flex-direction: row;
+  }
+  .item { 
+    height: 35%;
   }
 }
 
