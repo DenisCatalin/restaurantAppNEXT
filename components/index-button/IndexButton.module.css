@@ -9,6 +9,7 @@
     font-size: 2em;
     cursor: pointer;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.32);
     display: flex;
     justify-content: center;

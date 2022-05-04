@@ -19,8 +19,11 @@ const OrderHistoryItem = ({ item, date, price, paymentId }) => {
   const toggleOpen = () => {
     setIsOpen(!isOpen);
     window.scrollTo(0, 0);
-    Cookies.set("overflowHidden", isOpen);
   };
+
+  useEffect(() => {
+    Cookies.set("overflowHidden", isOpen);
+  }, [isOpen]);
   return (
     <div className={styles.bar} onClick={toggleOpen}>
       <h1 className={styles.historyText}>
