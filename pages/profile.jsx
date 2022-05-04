@@ -10,6 +10,7 @@ import BookingHistory from "../components/booking-history/booking-history";
 import OrderHistory from "../components/order-history/order-history";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import clx from "classnames";
+import Cookies from "js-cookie";
 
 const Profile = () => {
   const [profilePic, setProfilePic] = useState();
@@ -31,6 +32,7 @@ const Profile = () => {
   const addressInput = useRef(null);
 
   const { width } = useWindowDimensions();
+  const overflow = Cookies.get("overflowHidden");
 
   useEffect(() => {
     (async () => {
@@ -139,7 +141,11 @@ const Profile = () => {
   };
 
   return (
-    <div className={styles.imageBG}>
+    <div
+      className={
+        overflow ? clx(styles.imageBG, styles.overflowHidden) : styles.imageBG
+      }
+    >
       <Head>
         <title>Good Food - Profile</title>
       </Head>

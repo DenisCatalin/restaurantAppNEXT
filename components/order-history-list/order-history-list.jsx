@@ -1,8 +1,9 @@
 import React from "react";
 import Item from "../order-history-item/order-history-item";
-import styles from "./OrderHistoryItem.module.css";
+import styles from "./OrderHistoryList.module.css";
 import { useState } from "react";
 import Modal from "react-modal";
+import Cookies from "js-cookie";
 Modal.setAppElement("#__next");
 
 const OrderHistoryItem = ({ item, date, price, paymentId }) => {
@@ -18,6 +19,7 @@ const OrderHistoryItem = ({ item, date, price, paymentId }) => {
   const toggleOpen = () => {
     setIsOpen(!isOpen);
     window.scrollTo(0, 0);
+    Cookies.set("overflowHidden", isOpen);
   };
   return (
     <div className={styles.bar} onClick={toggleOpen}>

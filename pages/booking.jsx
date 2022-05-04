@@ -612,15 +612,15 @@ const Booking = () => {
             <div className={styles.historyc}>
               <div className={styles.seatText}>
                 <div className={styles.taken}></div>
-                <h3>Taken</h3>
+                <h3 className={styles.fmm}>Taken</h3>
               </div>
               <div className={styles.seatText}>
                 <div className={styles.available}></div>
-                <h3>Available</h3>
+                <h3 className={styles.fmm}>Available</h3>
               </div>
               <div className={styles.seatText}>
                 <div className={styles.selected}></div>
-                <h3>Selected</h3>
+                <h3 className={styles.fmm}>Selected</h3>
               </div>
             </div>
           </div>
