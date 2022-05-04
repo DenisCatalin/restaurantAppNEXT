@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "../order-history-item/order-history-item";
 import styles from "./OrderHistoryList.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Cookies from "js-cookie";
 Modal.setAppElement("#__next");
