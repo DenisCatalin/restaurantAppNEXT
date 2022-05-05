@@ -44,14 +44,14 @@ export default async function BookTables(req, res) {
         res.send({ message: "Complete", addBooking, addBookingForUser });
       } else {
         const defaultValue = value;
-        const array2 = defaultValue.split("|");
+        const arrayValue = defaultValue.split("|");
         tables.forEach((i) => {
-          array2[i - 1] = 1;
+          arrayValue[i - 1] = 1;
         });
         const modifyBooking = await modifyReservation(
           token,
           date,
-          array2.toString().replaceAll(",", "|")
+          arrayValue.toString().replaceAll(",", "|")
         );
 
         const addBookingForUser = await addToBookingHistory(
