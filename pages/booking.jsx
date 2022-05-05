@@ -159,6 +159,15 @@ const Booking = () => {
 
     const dateString = `${month}-${day}-${year}`;
     console.log(Bookings, issuer, seatsNumber, dateString, date);
+    console.log(
+      JSON.stringify({
+        tables: Bookings,
+        issuer: issuer,
+        seats: seatsNumber,
+        date: dateString,
+        currentDate: date,
+      })
+    );
     const res = await fetch("/api/addTablesToBooking", {
       method: "POST",
       headers: {

@@ -6,7 +6,6 @@ import {
 } from "../../lib/db/hasura";
 
 export default async function BookTables(req, res) {
-  const check = await checkReservation(token, date);
   if (req.method === "POST") {
     try {
       const token = req ? req.cookies?.token : null;
@@ -16,6 +15,7 @@ export default async function BookTables(req, res) {
       const date = req ? JSON.parse(req.headers.body).date : null;
       const currentDate = req ? JSON.parse(req.headers.body).currentDate : null;
 
+      const check = await checkReservation(token, date);
       const exist = check?.data?.booking?.length;
       const value = check?.data?.booking[0]?.bookingTables;
 
@@ -67,7 +67,7 @@ export default async function BookTables(req, res) {
       }
     } catch (error) {
       console.error("Something went wrong booking the tables", error);
-      res.status(500).send({ message: "Incomplete", checkReservation: error });
+      res.status(500).send({ message: "Incomplete", error: `Eroare ${error}` });
     }
   } else {
     res.send({ message: "Incomplete" });
