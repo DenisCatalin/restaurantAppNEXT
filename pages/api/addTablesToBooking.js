@@ -27,7 +27,7 @@ export default async function BookTables(req, res) {
         });
         const addBooking = await addReservation(
           token,
-          array2.toString().replaceAll(",", "|"),
+          array2,
           date,
           currentDate
         );
@@ -44,15 +44,11 @@ export default async function BookTables(req, res) {
         res.send({ message: "Complete", addBooking, addBookingForUser });
       } else {
         const defaultValue = value;
-        const arrayValue = defaultValue.split("|");
+        const array2 = defaultValue.split("|");
         tables.forEach((i) => {
-          arrayValue[i - 1] = 1;
+          array2[i - 1] = 1;
         });
-        const modifyBooking = await modifyReservation(
-          token,
-          date,
-          arrayValue.toString().replaceAll(",", "|")
-        );
+        const modifyBooking = await modifyReservation(token, date, array2);
 
         const addBookingForUser = await addToBookingHistory(
           token,
@@ -67,7 +63,7 @@ export default async function BookTables(req, res) {
       }
     } catch (error) {
       console.error("Something went wrong booking the tables", error);
-      res.status(500).send({ message: "Incomplete", error: `Eroare ${error}` });
+      res.status(500).send({ message: "Incomplete" });
     }
   } else {
     res.send({ message: "Incomplete" });
