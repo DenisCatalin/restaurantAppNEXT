@@ -27,7 +27,7 @@ export default async function BookTables(req, res) {
         });
         const addBooking = await addReservation(
           token,
-          array2,
+          array2.toString(),
           date,
           currentDate
         );
@@ -48,7 +48,11 @@ export default async function BookTables(req, res) {
         tables.forEach((i) => {
           array2[i - 1] = 1;
         });
-        const modifyBooking = await modifyReservation(token, date, array2);
+        const modifyBooking = await modifyReservation(
+          token,
+          date,
+          array2.toString()
+        );
 
         const addBookingForUser = await addToBookingHistory(
           token,
