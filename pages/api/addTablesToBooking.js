@@ -22,9 +22,14 @@ export default async function BookTables(req, res) {
       if (exist === 0) {
         const defaultValue = "0|0|0|0|0|0|0|0|0";
         const array2 = defaultValue.split("|");
+        array2.map((str) => {
+          return Number(str);
+        });
         tables.forEach((i) => {
           array2[i - 1] = 1;
         });
+
+        array2.toString().replaceAll(",", "|");
         const convertedArray = array2.toString().replaceAll(",", "|");
         const addBooking = await addReservation(
           token,
