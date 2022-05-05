@@ -67,9 +67,9 @@ export default async function BookTables(req, res) {
       }
     } catch (error) {
       console.error("Something went wrong booking the tables", error);
-      res.status(500).send({ message: "Incomplete" });
+      res.status(500).send({ message: "Incomplete", error });
     }
   } else {
-    res.send({ message: "Incomplete" });
+    res.send({ message: "Incomplete", error });
   }
 }
