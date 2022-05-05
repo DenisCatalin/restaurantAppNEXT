@@ -18,6 +18,7 @@ export default async function BookTables(req, res) {
       const check = await checkReservation(token, date);
       const exist = check?.data?.booking?.length;
       const value = check?.data?.booking[0]?.bookingTables;
+      let mortiitai;
 
       if (exist === 0) {
         const defaultValue = "0|0|0|0|0|0|0|0|0";
@@ -48,6 +49,7 @@ export default async function BookTables(req, res) {
         tables.forEach((i) => {
           array2[i - 1] = 1;
         });
+        mortiitai = array2;
         const modifyBooking = await modifyReservation(
           token,
           date,
@@ -69,7 +71,14 @@ export default async function BookTables(req, res) {
       console.error("Something went wrong booking the tables", error);
       res
         .status(500)
-        .send({ message: "Incomplete", error: `Eroare: ${error}` });
+        .send({
+          message: "Incomplete",
+          error: `Eroare: ${error}`,
+          check: check,
+          exists: exist,
+          value: value,
+          array: mortiitai,
+        });
     }
   } else {
     res.send({ message: "Incomplete", error: `Eroare: ${error}` });
