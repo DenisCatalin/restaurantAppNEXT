@@ -7,6 +7,9 @@ import {
 
 export default async function BookTables(req, res) {
   if (req.method === "POST") {
+    const check = await checkReservation(token, date);
+    const exist = check?.data?.booking?.length;
+    const value = check?.data?.booking[0]?.bookingTables;
     try {
       const token = req ? req.cookies?.token : null;
       const tables = req ? JSON.parse(req.headers.body).tables : null;
@@ -14,10 +17,6 @@ export default async function BookTables(req, res) {
       const seats = req ? JSON.parse(req.headers.body).seats : null;
       const date = req ? JSON.parse(req.headers.body).date : null;
       const currentDate = req ? JSON.parse(req.headers.body).currentDate : null;
-
-      const check = await checkReservation(token, date);
-      const exist = check?.data?.booking?.length;
-      const value = check?.data?.booking[0]?.bookingTables;
 
       if (exist === 0) {
         const defaultValue = "0|0|0|0|0|0|0|0|0";
