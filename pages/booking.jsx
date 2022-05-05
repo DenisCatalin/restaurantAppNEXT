@@ -172,6 +172,7 @@ const Booking = () => {
       },
     });
     const data = await res.json();
+    console.log(data);
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
     setTable3((prevState) => ({ ...prevState, selected: false }));
