@@ -158,6 +158,7 @@ const Booking = () => {
     }-${today.getFullYear()}`;
 
     const dateString = `${month}-${day}-${year}`;
+    console.log(Bookings, issuer, seatsNumber, dateString, date);
     const res = await fetch("/api/addTablesToBooking", {
       method: "POST",
       headers: {
@@ -171,7 +172,6 @@ const Booking = () => {
       },
     });
     const data = await res.json();
-    console.log(data);
     setTable1((prevState) => ({ ...prevState, selected: false }));
     setTable2((prevState) => ({ ...prevState, selected: false }));
     setTable3((prevState) => ({ ...prevState, selected: false }));

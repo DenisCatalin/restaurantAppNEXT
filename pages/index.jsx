@@ -10,7 +10,8 @@ import IndexButton from "../components/index-button/index-button";
 Dashboard pentru admini (Count comenzi/rezervari pe luna, profit pe luna, etc...)
 sistem de notificari
 sistem de chat
-responsive pagina de profil, checkout
+Testimonials page
+Inactive booking
 */
 
 export default function Home() {
