@@ -89,15 +89,15 @@ const MenuItem = ({ items }) => {
   };
   const { idMeal, strMeal, strMealThumb } = items;
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        `http://api.resmush.it/ws.php?img=${strMealThumb}&qlty=30`
-      );
-      const data = await res.json();
-      setMealImage(data?.dest);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch(
+  //       `http://api.resmush.it/ws.php?img=${strMealThumb}&qlty=30`
+  //     );
+  //     const data = await res.json();
+  //     setMealImage(data?.dest);
+  //   })();
+  // }, []);
 
   const [meal, setMeal] = useState({});
   const dispatch = useDispatch();
@@ -127,20 +127,16 @@ const MenuItem = ({ items }) => {
         </h1>
       </div>
       <div className={styles.imageCard} onClick={toggleOpen}>
-        {mealImage !== undefined ? (
-          <Image
-            src={mealImage}
-            alt={strMeal}
-            width={120}
-            height={120}
-            quality={50}
-            blurDataURL={strMealThumb}
-            placeholder="blur"
-            className={styles.itemImage}
-          />
-        ) : (
-          <Loading />
-        )}
+        <Image
+          src={mealImage}
+          alt={strMeal}
+          width={120}
+          height={120}
+          quality={50}
+          blurDataURL={strMealThumb}
+          placeholder="blur"
+          className={styles.itemImage}
+        />
       </div>
       <Modal
         isOpen={isOpen}
