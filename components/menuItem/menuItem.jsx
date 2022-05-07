@@ -7,6 +7,7 @@ import Modal from "react-modal";
 import Ingredient from "../ingredient/ingredient";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cart.slice";
+import Loading from "../loading-button/loading-button";
 import useWindowDimensions from "../../utils/useWindowDimensions";
 
 Modal.setAppElement("#__next");
@@ -79,15 +80,24 @@ function Content({ id, img, dataMeal }) {
 const MenuItem = ({ items }) => {
   const { width, height } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
+  const [mealImage, setMealImage] = useState(undefined);
   let mealStorage = {};
-
-  // console.log(items);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
     console.log(isOpen);
   };
   const { idMeal, strMeal, strMealThumb } = items;
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        `http://api.resmush.it/ws.php?img=${strMealThumb}&qlty=30`
+      );
+      const data = await res.json();
+      setMealImage(data?.dest);
+    })();
+  }, []);
 
   const [meal, setMeal] = useState({});
   const dispatch = useDispatch();
@@ -117,16 +127,20 @@ const MenuItem = ({ items }) => {
         </h1>
       </div>
       <div className={styles.imageCard} onClick={toggleOpen}>
-        <Image
-          src={strMealThumb}
-          alt={strMeal}
-          width={120}
-          height={120}
-          quality={50}
-          blurDataURL={strMealThumb}
-          placeholder="blur"
-          className={styles.itemImage}
-        />
+        {mealImage !== undefined ? (
+          <Image
+            src={mealImage}
+            alt={strMeal}
+            width={120}
+            height={120}
+            quality={50}
+            blurDataURL={strMealThumb}
+            placeholder="blur"
+            className={styles.itemImage}
+          />
+        ) : (
+          <Loading />
+        )}
       </div>
       <Modal
         isOpen={isOpen}

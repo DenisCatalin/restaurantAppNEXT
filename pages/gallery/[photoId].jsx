@@ -52,8 +52,6 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
 
   const { height, width } = useWindowDimensions();
 
-  console.log(width);
-
   useEffect(() => {
     if (width >= 1024) setToggleComments(false);
   }, [width]);
