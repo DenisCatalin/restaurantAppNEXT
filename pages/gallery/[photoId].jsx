@@ -161,11 +161,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
             }
           >
             <Image
-              src={
-                width > 450
-                  ? `http://api.resmush.it/ws.php?img=${secure_url}&qlty=80`
-                  : `http://api.resmush.it/ws.php?img=${secure_url}&qlty=50`
-              }
+              src={secure_url}
               alt=""
               className={styles.image}
               layout="fill"
@@ -192,7 +188,7 @@ const PhotoId = ({ asset_id, secure_url, uploaded_at }) => {
               <div className={styles.profilePic}>
                 <Image
                   src={
-                    "http://api.resmush.it/ws.php?img=https://res.cloudinary.com/dgkdpysp5/image/upload/v1649855065/restaurant-app-images/landing_prznt2.jpg&qlty=50"
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649855065/restaurant-app-images/landing_prznt2.jpg"
                   }
                   alt=""
                   layout="fill"

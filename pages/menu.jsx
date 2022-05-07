@@ -254,7 +254,7 @@ const Menu = ({
               <a>
                 <Image
                   src={
-                    "http://api.resmush.it/ws.php?img=https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/meat_wewd5q.png&qlty=50"
+                    "https://res.cloudinary.com/dgkdpysp5/image/upload/v1649854686/restaurant-app-images/meat_wewd5q.png"
                   }
                   alt=""
                   layout="fill"
