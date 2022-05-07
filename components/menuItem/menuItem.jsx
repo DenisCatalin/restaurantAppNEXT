@@ -32,7 +32,7 @@ function Content({ id, img, dataMeal }) {
   });
 
   const comp = ingredients2.map((ing, i) => {
-    const string = `https://www.themealdb.com/images/ingredients/${ing}.png`;
+    const string = `http://api.resmush.it/ws.php?img=https://www.themealdb.com/images/ingredients/${ing}.png&qlty=50`;
     return <Ingredient key={i} text={ing} img={string} />;
   });
 
@@ -118,7 +118,11 @@ const MenuItem = ({ items }) => {
       </div>
       <div className={styles.imageCard} onClick={toggleOpen}>
         <Image
-          src={strMealThumb}
+          src={
+            width > 450
+              ? `http://api.resmush.it/ws.php?img=${strMealThumb}&qlty=70`
+              : `http://api.resmush.it/ws.php?img=${strMealThumb}&qlty=30`
+          }
           alt={strMeal}
           width={120}
           height={120}
